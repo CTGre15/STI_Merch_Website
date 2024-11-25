@@ -1,0 +1,12 @@
+#loginform {
+    display: block;
+}
+
+#registerform {
+    display: none;
+}
+
+.changeForm {
+    font-size: smaller;
+    color: grey;
+}
