@@ -4,7 +4,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="welcome.css">
-        <script src="welcome.js"></script>
+        <script src="functions.js"></script>
     </head>
     <body>
         <?php
