@@ -6,7 +6,7 @@
         <script src="functions.js"></script>
     </head>
     <body>
-        Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?> <br>
+        <h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1> <br>
         <form method="post">
             <button name="logout">Log out</button>
         </form>
