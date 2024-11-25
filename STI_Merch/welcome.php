@@ -23,9 +23,17 @@
                     lastname VARCHAR(20) NOT NULL,
                     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                     )";
+            $itemsTable = "CREATE TABLE IF NOT EXISTS Items (
+                        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        itemName VARCHAR(20) NOT NULL,
+                        itemDesc VARCHAR(20) NOT NULL,
+                        price INT NOT NULL,
+                        stocks INT(5) NOT NULL
+                        );";
             $db = new mysqli($servername, $username, $password, $dbName);
             $_SESSION["db"] = $db;
             mysqli_query($db, $accountsTable);
+            mysqli_query($db, $itemsTable);
 
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
