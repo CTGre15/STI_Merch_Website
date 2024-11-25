@@ -30,13 +30,32 @@
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
             }
-            function verify($db, $email, $password){
+            function addAdmin(){
+                $email = "admin1";
+                $password = "1234";
+                $fname = "";
+                $lname = "";
+                $countEmail = findEmail($email);
+                if ($countEmail == 0) {
+                    $insertQuery = $_SESSION['db']->prepare("INSERT INTO Accounts (studemail, studpassword, firstname, lastname)
+                    VALUES (?, ?, ?, ?)");
+                    $insertQuery->bind_param("ssss", $email, $password, $fname, $lname);
+                    $insertQuery->execute();
+                    $insertQuery->close();
+                } else {
+                }
+            }
+            function verify($email, $password){
                 $countEmail = findEmail($email);
                 if ($countEmail > 0) {
                     $countPass = checkPass($email, $password);
                     if ($countPass > 0) {
                         setSession($email);
-                        header("Location: main.php");
+                        if ($email == "admin1"){
+                            header("Location: adminPage.php");
+                        } else {
+                            header("Location: main.php");
+                        }
                     } else {
                         alert("Incorrect Password");
                     }
@@ -78,20 +97,26 @@
                     }
                 }
             }
-            function inputRegInfo($db, $email, $password, $fname, $lname){
-                $insertQuery = $db->prepare("INSERT INTO Accounts (studemail, studpassword, firstname, lastname)
-                VALUES (?, ?, ?, ?)");
-                $insertQuery->bind_param("ssss", $email, $password, $fname, $lname);
-                $insertQuery->execute();
-                $insertQuery->close();
-                alert("Account Registered!");
+            function inputRegInfo($email, $password, $fname, $lname){
+                $countEmail = findEmail($email);
+                if ($countEmail == 0) {
+                    $insertQuery = $_SESSION['db']->prepare("INSERT INTO Accounts (studemail, studpassword, firstname, lastname)
+                    VALUES (?, ?, ?, ?)");
+                    $insertQuery->bind_param("ssss", $email, $password, $fname, $lname);
+                    $insertQuery->execute();
+                    $insertQuery->close();
+                    alert("Account Registered!");
+                } else {
+                    alert("Account already Exists");
+                }
             }
-            function passCreds($db){
-                verify($db, $_POST["loginemail"], $_POST["loginpassword"]);
+            function passCreds(){
+                verify($_POST["loginemail"], $_POST["loginpassword"]);
             }
-            function regInfo($db){
-                inputRegInfo($db, $_POST["registeremail"], $_POST["registerpassword"], $_POST["registerfname"], $_POST["registerlname"]);
+            function regInfo(){
+                inputRegInfo($_POST["registeremail"], $_POST["registerpassword"], $_POST["registerfname"], $_POST["registerlname"]);
             }
+            addAdmin();
         ?>
         <div id="loginform">
             <form method="post">
@@ -119,9 +144,9 @@
         </div>
         <?php
             if(isset($_POST["login"])) {
-                passCreds($db);
+                passCreds();
             } if(isset($_POST["register"])) {
-                regInfo($db);
+                regInfo();
             }
         ?>
     </body>
