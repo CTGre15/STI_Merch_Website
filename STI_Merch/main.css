@@ -4,6 +4,8 @@
     width: auto;
 }
 .selectionContainer>a {
+    display: grid;
+    grid-template-columns: auto auto;
     margin: 5%;
     text-align: left;
 }

@@ -26,10 +26,13 @@
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<a class='clickable' href='displayItem.php?itemName=" . $row["itemName"] . "'>";
+                        echo "<div id='itemPic'> Kunwari Picture to </div>";
+                        echo "<div>";
                         echo $row["itemName"] . "<br>";
                         echo $row["itemDesc"] . "<br>";
                         echo "₱" . $row["price"] . "<br>";
                         echo "Stocks: " . $row["stocks"] . "<br>";
+                        echo "</div>";
                         echo "</a>";
                     }
                 }

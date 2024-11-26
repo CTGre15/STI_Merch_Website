@@ -18,7 +18,8 @@
             <input type="int" id="price" name="price" required><br>
             <label for="stocks">Stocks:</label>
             <input type="int" id="stocks" name="stocks" required><br>
-            Attach Image: -Ginagawa pa- <br>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image"><br>
             <button name="listItem">List Item</button>
         </form>
         <form method="post">
