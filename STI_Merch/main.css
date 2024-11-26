@@ -1,0 +1,16 @@
+.selectionContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: auto;
+}
+.selectionContainer>a {
+    margin: 5%;
+    text-align: left;
+}
+.selectionContainer>a:hover {
+    background: lightblue;
+}
+.clickable {
+    color: black; 
+    text-decoration:none;
+}
