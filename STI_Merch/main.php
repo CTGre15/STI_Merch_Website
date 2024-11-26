@@ -13,17 +13,11 @@
         <script src="functions.js"></script>
     </head>
     <body>
-        <header>
-            <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
-            <div class="title"> <h1>STI Merch Store</h1> </div>
-            <form method="post">
-                <button name="logout" class="logout">Log out</button>
-            </form>
-        </header>
-
-        <div class="user"><h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1></div><br>
-
-        <h3>Browse our selection</h3><br>
+        <h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
+        <form method="post">
+            <button name="logout">Log out</button>
+        </form>
+        <h3>Browse our selection</h3>
         <div class="selectionContainer">
             <?php
                 $displayItemQuery = "SELECT * FROM Items";
@@ -32,7 +26,7 @@
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<a class='clickable' href='displayItem.php?itemName=" . $row["itemName"] . "'>";
-                        echo "<div id='itemPic'> Kunwari Picture to </div>";
+                        echo "<div> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
                         echo "<div>";
                         echo $row["itemName"] . "<br>";
                         echo $row["itemDesc"] . "<br>";

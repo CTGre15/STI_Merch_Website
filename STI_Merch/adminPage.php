@@ -3,22 +3,13 @@
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="adminPage.css">
         <script src="functions.js"></script>
     </head>
     <body>
-        <header>
-            <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
-            <div class="title"> <h1>STI Merch Store</h1> </div>
-            <form method="post">
-                <button name="logout" class="logout">Log out</button>
-            </form>
-        </header>
-
-        <div class="user"><h1>Welcome Admin</h1></div>
+        <h1>Welcome Admin</h1>
         
-        <form method="post" class="listItem">
-            <h3>List an Item</h3><br>
+        <form method="post" enctype="multipart/form-data">
+            <h3>List an Item</h3>
             <label for="itemName">Item Name:</label>
             <input type="text" id="itemName" name="itemName" required><br>
             <label for="itemDesc">Item Description:</label>
@@ -26,12 +17,14 @@
             <label for="price">Price:</label>
             <input type="int" id="price" name="price" required><br>
             <label for="stocks">Stocks:</label>
-            <input type="int" id="stocks" name="stocks" required><br><br>
+            <input type="int" id="stocks" name="stocks" required><br>
             <label for="image">Image:</label>
-            <input type="file" id="image" name="image"><br><br>
-            <button name="listItem" class="listItem">List Item</button>
+            <input type="file" id="image" name="image" required><br>
+            <button name="listItem">List Item</button>
         </form>
-        
+        <form method="post">
+            <button name="logout">Log out</button>
+        </form>
         <?php
             $servername = "localhost";
             $username = "root";
@@ -43,10 +36,11 @@
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
             }
-            function listItem($itemName, $itemDesc, $price, $stocks){
-                $insertItemQuery = $_SESSION['db']->prepare("INSERT INTO Items (itemName, itemDesc, price, stocks)
-                VALUES (?, ?, ?, ?)");
-                $insertItemQuery->bind_param("ssii", $itemName, $itemDesc, $price, $stocks);
+            function listItem($itemName, $itemDesc, $price, $stocks, $imageFile){
+                $imageName = imageUpload($imageFile);
+                $insertItemQuery = $_SESSION['db']->prepare("INSERT INTO Items (itemName, itemDesc, price, stocks, imageName)
+                VALUES (?, ?, ?, ?, ?)");
+                $insertItemQuery->bind_param("ssiis", $itemName, $itemDesc, $price, $stocks, $imageName);
                 $insertItemQuery->execute();
                 alert("Item Listed");
             }
@@ -55,8 +49,30 @@
                 $itemDesc = $_POST["itemDesc"];
                 $price = $_POST["price"];
                 $stocks = $_POST["stocks"];
+                $imageFile = $_FILES["image"];
 
-                listItem($itemName, $itemDesc, $price, $stocks);
+                listItem($itemName, $itemDesc, $price, $stocks, $imageFile);
+            }
+            function imageUpload($imageFile){
+                $file = $imageFile;
+                $fileName = $file["name"];
+                $fileTmpName = $file["tmp_name"];
+                $fileError = $file["error"];
+                $fileType = $file["type"];
+
+                $fileDividedName = explode('.', $fileName);
+                $fileExt = strtolower(end($fileDividedName));
+
+                $accepted = array("jpg", "jpeg", "png");
+
+                if (in_array($fileExt, $accepted)){
+                    if ($fileError === 0){
+                        $fileDestination = "itemsImage/" . $fileName;
+                        move_uploaded_file($fileTmpName, $fileDestination);
+                    }
+                }
+
+                return $fileName;
             }
             function logout(){
                 session_destroy();
