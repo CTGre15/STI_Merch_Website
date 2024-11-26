@@ -17,14 +17,15 @@
             $sql = "CREATE DATABASE IF NOT EXISTS ". $dbName .";";
             mysqli_query($conn, $sql);
             $accountsTable = "CREATE TABLE IF NOT EXISTS Accounts (
-                    studemail VARCHAR(50) PRIMARY KEY,
+                    studId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                    studemail VARCHAR(50),
                     studpassword VARCHAR(50) NOT NULL,
                     firstname VARCHAR(20) NOT NULL,
                     lastname VARCHAR(20) NOT NULL,
                     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                     )";
             $itemsTable = "CREATE TABLE IF NOT EXISTS Items (
-                        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        itemId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                         itemName VARCHAR(20) NOT NULL,
                         itemDesc VARCHAR(20) NOT NULL,
                         price INT NOT NULL,
@@ -105,6 +106,29 @@
                     }
                 }
             }
+            function findStudID ($email){
+                $findStudID = $_SESSION['db']->prepare("SELECT studId FROM Accounts WHERE studemail = ?");
+                $findStudID->bind_param("s", $email);
+                $findStudID->execute();
+                $result = $findStudID->get_result();
+                $id;
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $id = $row["studId"];
+                    }
+                }
+                return $id;
+            }
+            function createCart($fName, $lName, $email){
+                $idNum = findStudID($email);
+
+                $tableName = $lName . $fName . $idNum . "Cart";
+                $cart = "CREATE TABLE IF NOT EXISTS " . $tableName . " (
+                        itemName VARCHAR(20) NOT NULL,
+                        addedToCart INT(5)
+                        );";
+                mysqli_query($_SESSION['db'], $cart);
+            }
             function inputRegInfo($email, $password, $fname, $lname){
                 $countEmail = findEmail($email);
                 if ($countEmail == 0) {
@@ -113,6 +137,7 @@
                     $insertQuery->bind_param("ssss", $email, $password, $fname, $lname);
                     $insertQuery->execute();
                     $insertQuery->close();
+                    createCart($fname, $lname, $email);
                     alert("Account Registered!");
                 } else {
                     alert("Account already Exists");
