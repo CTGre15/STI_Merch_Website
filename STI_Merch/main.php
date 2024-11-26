@@ -35,13 +35,22 @@
                 }
             ?>
         </div>
+        <form method="post">
+            <button name="viewCart">View My Cart</button>
+        </form>
         <?php
             function logout(){
                 session_destroy();
                 header("Location: welcome.php");
             }
+            function viewCart(){
+                header("Location: cart.php");
+            }
             if(isset($_POST["logout"])) {
                 logout();
+            }
+            if(isset($_POST["viewCart"])) {
+                viewCart();
             }
         ?>
     </body>
