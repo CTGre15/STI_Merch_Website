@@ -1,11 +1,15 @@
-function openRegister(){
-    document.getElementById("loginform").style.display = "none";
-    document.getElementById("registerform").style.display = "block";
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
 }
 
-function openLogin(){
-    document.getElementById("registerform").style.display = "none";
-    document.getElementById("loginform").style.display = "block";
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+    }
 }
 
 function showLoginPassword(){
