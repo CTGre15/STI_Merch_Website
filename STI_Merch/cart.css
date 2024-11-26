@@ -1,0 +1,15 @@
+.cartContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: auto;
+} 
+.cartContainer>div {
+    margin: 5%;
+    text-align: center;
+}
+.cartItemQuantity>form{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: auto;
+    padding: 0 30%;
+}

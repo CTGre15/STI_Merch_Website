@@ -6,10 +6,10 @@
         <script src="functions.js"></script>
     </head>
     <body>
-        <h1>Welcome Admin</h1><br>
+        <h1>Welcome Admin</h1>
         
         <form method="post">
-            <h3>List an Item</h3><br>
+            <h3>List an Item</h3>
             <label for="itemName">Item Name:</label>
             <input type="text" id="itemName" name="itemName" required><br>
             <label for="itemDesc">Item Description:</label>
@@ -25,9 +25,18 @@
             <button name="logout">Log out</button>
         </form>
         <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbName = "STIMerch";
+            $db = new mysqli($servername, $username, $password, $dbName);
+            $_SESSION['db'] = $db;
+
+            function alert($msg) {
+                echo "<script type='text/javascript'>alert('$msg');</script>";
+            }
             function listItem($itemName, $itemDesc, $price, $stocks){
-                $db = $_SESSION['db'];
-                $insertItemQuery = $db->prepare("INSERT INTO Items (itemName, itemDesc, price, stocks)
+                $insertItemQuery = $_SESSION['db']->prepare("INSERT INTO Items (itemName, itemDesc, price, stocks)
                 VALUES (?, ?, ?, ?)");
                 $insertItemQuery->bind_param("ssii", $itemName, $itemDesc, $price, $stocks);
                 $insertItemQuery->execute();
