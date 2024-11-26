@@ -3,7 +3,7 @@
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="welcome.css">
+        <link rel="stylesheet" href="welcomePage.css">
         <script src="functions.js"></script>
     </head>
     <body>
@@ -152,29 +152,52 @@
             }
             addAdmin();
         ?>
-        <div id="loginform">
-            <form method="post">
-                <label for="loginemail">Email:</label>
-                <input type="text" id="loginemail" name="loginemail" required><br>
-                <label for="loginpassword">Password:</label>
-                <input type="password" id="loginpassword" name="loginpassword" required><br>
-                <input type="submit" name="login" value="Log in">
-            </form>
-        <div class="changeForm">Don't have an account yet? <a href="#" onclick="openRegister(); return false;">Register</a>.</div>
+        <header>
+            <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
+            <div class="title"> <h1>STI Merch Store</h1> </div>
+            <div class="login"> <button onclick="openModal('loginModal')">Log in</button> </div>
+        </header>
+
+        <div class="section1"> <img src="images/welcome.png" alt="Welcome STIers"> </div>
+
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('loginModal')">&times;</span>
+                <div id="loginform">
+                    <form method="post">
+                        <label for="loginemail">Email:</label>
+                        <input type="text" id="loginemail" name="loginemail" required><br>
+                        <label for="loginpassword">Password:</label>
+                        <input type="password" id="loginpassword" name="loginpassword" required><br>
+                        <input type="checkbox" onclick="showLoginPassword()" style="margin-left: 160px"><span style="font-size: 13px;">Show Password</span><br><br>
+                        <input type="submit" name="login" value="Log in"><br><br>
+
+                        <div class="changeForm">Don't have an account yet? <a href="#" onclick="openModal('registerModal'); closeModal('loginModal'); return false;">Register</a>.</div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div id="registerform">
-            <form method="post">
-                <label for="registerfname">First Name:</label>
-                <input type="text" id="registerfname" name="registerfname" required><br>
-                <label for="registerlname">Last Name:</label>
-                <input type="text" id="registerlname" name="registerlname" required><br>
-                <label for="registeremail">Email:</label>
-                <input type="text" id="registeremail" name="registeremail" required><br>
-                <label for="registerpassword">Password:</label>
-                <input type="password" id="registerpassword" name="registerpassword" required><br>
-                <input type="submit" name="register" value="Register">
-            </form>
-        <div class="changeForm">Already have an account? <a href="#" onclick="openLogin(); return false;">Log in</a>.</div>
+
+        <div id="registerModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('registerModal')">&times;</span>
+                <div id="registerform">
+                    <form method="post">
+                        <label for="registerfname">First Name:</label>
+                        <input type="text" id="registerfname" name="registerfname" required><br>
+                        <label for="registerlname">Last Name:</label>
+                        <input type="text" id="registerlname" name="registerlname" required><br>
+                        <label for="registeremail">Email:</label>
+                        <input type="text" id="registeremail" name="registeremail" required><br>
+                        <label for="registerpassword">Password:</label>
+                        <input type="password" id="registerpassword" name="registerpassword" required><br>
+                        <input type="checkbox" onclick="showRegisterPassword()" style="margin-left: 160px"><span style="font-size: 13px;">Show Password</span><br><br>
+                        <input type="submit" name="register" value="Register"><br><br>
+
+                        <div class="changeForm">Already have an account? <a href="#" onclick="openModal('loginModal'); closeModal('registerModal'); return false;">Log in</a>.</div>
+                    </form>
+                </div>
+            </div>
         </div>
         <?php
             if(isset($_POST["login"])) {
