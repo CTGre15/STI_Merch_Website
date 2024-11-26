@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    background-color: white;
+}
+
+.logo {
+    padding: 10px;
+}
+
+.title {
+    padding: 15px 0 0 30px; 
+}
+
+.title h1 {
+    font-size: 45px;
+    color: #00416A;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+.logout {
+    background-color: #00416A;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    cursor: pointer;
+    margin: 20px 0 0 970px;
+}
+
+.logout:hover {
+    background-color: #72A0C1;
+}
+
+.listItem {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #FFFFAD;
+}
+
+input[type="text"], input[type="int"] {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.listItem button {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.listItem button:hover {
+    cursor: pointer;
+    background-color: #45a049;
+}
+
+.user {
+    font-size: 25px;
+    text-align: center;
+    padding: 20px;
+    color: #002244;
+    border-top: 5px double #ccc;
+    background-color: white;
+}
+

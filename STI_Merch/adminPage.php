@@ -3,13 +3,22 @@
 ?>
 <html>
     <head>
+        <link rel="stylesheet" href="adminPage.css">
         <script src="functions.js"></script>
     </head>
     <body>
-        <h1>Welcome Admin</h1>
+        <header>
+            <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
+            <div class="title"> <h1>STI Merch Store</h1> </div>
+            <form method="post">
+                <button name="logout" class="logout">Log out</button>
+            </form>
+        </header>
+
+        <div class="user"><h1>Welcome Admin</h1></div>
         
-        <form method="post">
-            <h3>List an Item</h3>
+        <form method="post" class="listItem">
+            <h3>List an Item</h3><br>
             <label for="itemName">Item Name:</label>
             <input type="text" id="itemName" name="itemName" required><br>
             <label for="itemDesc">Item Description:</label>
@@ -17,14 +26,12 @@
             <label for="price">Price:</label>
             <input type="int" id="price" name="price" required><br>
             <label for="stocks">Stocks:</label>
-            <input type="int" id="stocks" name="stocks" required><br>
+            <input type="int" id="stocks" name="stocks" required><br><br>
             <label for="image">Image:</label>
-            <input type="file" id="image" name="image"><br>
-            <button name="listItem">List Item</button>
+            <input type="file" id="image" name="image"><br><br>
+            <button name="listItem" class="listItem">List Item</button>
         </form>
-        <form method="post">
-            <button name="logout">Log out</button>
-        </form>
+        
         <?php
             $servername = "localhost";
             $username = "root";

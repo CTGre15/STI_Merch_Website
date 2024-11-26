@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .selectionContainer {
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -15,4 +21,44 @@
 .clickable {
     color: black; 
     text-decoration:none;
+}
+
+header {
+    display: flex;
+    background-color: white;
+    border-bottom: 5px double #ccc;
+}
+
+.logo {
+    padding: 10px;
+}
+
+.title {
+    padding: 15px 0 0 30px; 
+}
+
+.title h1 {
+    font-size: 45px;
+    color: #00416A;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+.logout {
+    background-color: #00416A;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    cursor: pointer;
+    margin: 20px 0 0 970px;
+}
+
+.logout:hover {
+    background-color: #72A0C1;
 }
