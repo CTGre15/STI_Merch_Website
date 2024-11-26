@@ -10,3 +10,39 @@
     font-size: smaller;
     color: grey;
 }
+
+.changeForm:hover {
+    cursor: pointer;
+    color: black;
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="text"], #loginform input[type="password"], #registerform input[type="text"], #registerform input[type="password"] {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"], #registerform input[type="submit"] {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type="submit"]:hover, #registerform input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #45a049;
+}

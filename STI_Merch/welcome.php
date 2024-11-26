@@ -132,9 +132,11 @@
                 <input type="text" id="loginemail" name="loginemail" required><br>
                 <label for="loginpassword">Password:</label>
                 <input type="password" id="loginpassword" name="loginpassword" required><br>
-                <input type="submit" name="login" value="Log in">
+                <input type="checkbox" onclick="showLoginPassword()" style="margin-left: 200px"><span style="font-size: 13px;">Show Password</span><br><br>
+                <input type="submit" name="login" value="Log in"><br><br>
+
+                <div class="changeForm">Don't have an account yet? <a href="#" onclick="openRegister(); return false;">Register</a>.</div>
             </form>
-        <div class="changeForm">Don't have an account yet? <a href="#" onclick="openRegister(); return false;">Register</a>.</div>
         </div>
         <div id="registerform">
             <form method="post">
@@ -146,9 +148,11 @@
                 <input type="text" id="registeremail" name="registeremail" required><br>
                 <label for="registerpassword">Password:</label>
                 <input type="password" id="registerpassword" name="registerpassword" required><br>
-                <input type="submit" name="register" value="Register">
+                <input type="checkbox" onclick="showRegisterPassword()" style="margin-left: 200px"><span style="font-size: 13px;">Show Password</span><br><br>
+                <input type="submit" name="register" value="Register"><br><br>
+
+                <div class="changeForm">Already have an account? <a href="#" onclick="openLogin(); return false;">Log in</a>.</div>
             </form>
-        <div class="changeForm">Already have an account? <a href="#" onclick="openLogin(); return false;">Log in</a>.</div>
         </div>
         <?php
             if(isset($_POST["login"])) {
