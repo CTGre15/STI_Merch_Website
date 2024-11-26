@@ -21,28 +21,30 @@
             </form>
         </header>
 
-        <div class="user"><h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1></div><br>
+        <h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
 
-        <h3>Browse our selection</h3><br>
-        <div class="selectionContainer">
-            <?php
-                $displayItemQuery = "SELECT * FROM Items";
-                $result = mysqli_query($_SESSION['db'], $displayItemQuery);
-        
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "<a class='clickable' href='displayItem.php?itemName=" . $row["itemName"] . "'>";
-                        echo "<div id='itemPic'> Kunwari Picture to </div>";
-                        echo "<div>";
-                        echo $row["itemName"] . "<br>";
-                        echo $row["itemDesc"] . "<br>";
-                        echo "₱" . $row["price"] . "<br>";
-                        echo "Stocks: " . $row["stocks"] . "<br>";
-                        echo "</div>";
-                        echo "</a>";
+        <h3>Browse our selection</h3>
+        <div class="selectionContainerBox">
+            <div class="selectionContainer">
+                <?php
+                    $displayItemQuery = "SELECT * FROM Items";
+                    $result = mysqli_query($_SESSION['db'], $displayItemQuery);
+            
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<a class='clickable' href='displayItem.php?itemName=" . $row["itemName"] . "'>";
+                            echo "<div> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
+                            echo "<div id='itemDesc'>";
+                            echo $row["itemName"] . "<br>";
+                            echo $row["itemDesc"] . "<br>";
+                            echo "₱" . $row["price"] . "<br>";
+                            echo "Stocks: " . $row["stocks"] . "<br>";
+                            echo "</div>";
+                            echo "</a>";
+                        }
                     }
-                }
-            ?>
+                ?>
+            </div>
         </div>
         <form method="post">
             <button name="viewCart">View My Cart</button>

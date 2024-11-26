@@ -58,84 +58,97 @@
                         $_SESSION["checkoutPrice"] = $_SESSION["checkoutPrice"] + $price;
                     }
                 }
-
-                echo "<h3>Total Price: " . $_SESSION["checkoutPrice"] . "</h3>";
-
-                function alert($msg) {
-                    echo "<script type='text/javascript'>alert('$msg');</script>";
-                }
-                function getItemPrice($itemName){
-                    $getItemPrice = $_SESSION['db']->prepare("SELECT price FROM Items WHERE itemName = ?");
-                    $getItemPrice->bind_param("s", $itemName);
-                    $getItemPrice->execute();
-                    $result = $getItemPrice->get_result();
-                    $price;
-                    if (mysqli_num_rows($result) > 0) {
-                        while($row = mysqli_fetch_assoc($result)) {
-                            $price = $row["price"];
-                        }
-                    }
-                    return $price;
-                }
-                function getStock($itemName){
-                    $getStock = $_SESSION['db']->prepare("SELECT stocks FROM Items WHERE itemName = ?");
-                    $getStock->bind_param("s", $itemName);
-                    $getStock->execute();
-                    $result = $getStock->get_result();
-                    $stocks;
-                    if (mysqli_num_rows($result) > 0) {
-                        while($row = mysqli_fetch_assoc($result)) {
-                            $stocks = $row["stocks"];
-                        }
-                    }
-                    return $stocks;
-                }
-                function add1($itemName, $itemQuantity){
-                    if($itemQuantity < getStock($itemName)){
-                        $query = "UPDATE " . $_SESSION["cart"] . "
-                                    SET addedToCart = addedToCart + 1
-                                    WHERE itemName = '" . $itemName . "';";
-                        $add1ToItem = $_SESSION['db']->prepare($query);
-                        $add1ToItem->execute();
-                        $add1ToItem->close();
-                        header("Refresh: 0");
-                    } else {
-                        alert("Exceeded item stock");
-                    }
-                }
-                function subtract1($itemName, $itemQuantity){
-                    if ($itemQuantity > 1){
-                        $query = "UPDATE " . $_SESSION["cart"] . "
-                                    SET addedToCart = addedToCart - 1
-                                    WHERE itemName = '" . $itemName . "';";
-                        $subtract1ToItem = $_SESSION['db']->prepare($query);
-                        $subtract1ToItem->execute();
-                        $subtract1ToItem->close();
-                        header("Refresh: 0");
-                    } else {
-                        $query = "DELETE FROM " . $_SESSION["cart"] . " WHERE itemName = '" . $itemName . "';";
-                        $subtract1ToItem = $_SESSION['db']->prepare($query);
-                        $subtract1ToItem->execute();
-                        $subtract1ToItem->close();
-                        header("Refresh: 0");
-                    }
-                }
-                function logout(){
-                    session_destroy();
-                    header("Location: welcome.php");
-                }
-                if(isset($_POST["logout"])) {
-                    logout();
-                }
-                if(isset($_POST["browseSelection"])) {
-                    header("Location: main.php");
-                }
-                if(isset($_POST["add1"])) {
-                    add1($_POST["itemName"], $_POST["itemQuantity"]);
-                }
-                if(isset($_POST["subtract1"])) {
-                    subtract1($_POST["itemName"], $_POST["itemQuantity"]);
-                }
-            ?>
+                ?>
         </div>
-        
+        <?php
+            $totalPayment = $_SESSION["checkoutPrice"] + 50;
+
+            echo "<h4>Payment Details</h4>";
+            echo "Merchandise Subtotal: " . $_SESSION["checkoutPrice"] . "<br>";
+            echo "Shipping Subtotal: 50";
+            echo "<h5>Total Payment: " . $totalPayment . "</h5>";
+            echo "<form method='post'>
+                    <button name='checkout'>Place Order</button>
+                </form>";
+
+            function alert($msg) {
+                echo "<script type='text/javascript'>alert('$msg');</script>";
+            }
+            function getItemPrice($itemName){
+                $getItemPrice = $_SESSION['db']->prepare("SELECT price FROM Items WHERE itemName = ?");
+                $getItemPrice->bind_param("s", $itemName);
+                $getItemPrice->execute();
+                $result = $getItemPrice->get_result();
+                $price;
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $price = $row["price"];
+                    }
+                }
+                return $price;
+            }
+            function getStock($itemName){
+                $getStock = $_SESSION['db']->prepare("SELECT stocks FROM Items WHERE itemName = ?");
+                $getStock->bind_param("s", $itemName);
+                $getStock->execute();
+                $result = $getStock->get_result();
+                $stocks;
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $stocks = $row["stocks"];
+                    }
+                }
+                return $stocks;
+            }
+            function add1($itemName, $itemQuantity){
+                if($itemQuantity < getStock($itemName)){
+                    $query = "UPDATE " . $_SESSION["cart"] . "
+                                SET addedToCart = addedToCart + 1
+                                WHERE itemName = '" . $itemName . "';";
+                    $add1ToItem = $_SESSION['db']->prepare($query);
+                    $add1ToItem->execute();
+                    $add1ToItem->close();
+                    header("Refresh: 0");
+                } else {
+                    alert("Exceeded item stock");
+                }
+            }
+            function subtract1($itemName, $itemQuantity){
+                if ($itemQuantity > 1){
+                    $query = "UPDATE " . $_SESSION["cart"] . "
+                                SET addedToCart = addedToCart - 1
+                                WHERE itemName = '" . $itemName . "';";
+                    $subtract1ToItem = $_SESSION['db']->prepare($query);
+                    $subtract1ToItem->execute();
+                    $subtract1ToItem->close();
+                    header("Refresh: 0");
+                } else {
+                    $query = "DELETE FROM " . $_SESSION["cart"] . " WHERE itemName = '" . $itemName . "';";
+                    $subtract1ToItem = $_SESSION['db']->prepare($query);
+                    $subtract1ToItem->execute();
+                    $subtract1ToItem->close();
+                    header("Refresh: 0");
+                }
+            }
+            function logout(){
+                session_destroy();
+                header("Location: welcome.php");
+            }
+            if(isset($_POST["logout"])) {
+                logout();
+            }
+            if(isset($_POST["browseSelection"])) {
+                header("Location: main.php");
+            }
+            if(isset($_POST["checkout"])) {
+                logout();
+            }
+            if(isset($_POST["add1"])) {
+                add1($_POST["itemName"], $_POST["itemQuantity"]);
+            }
+            if(isset($_POST["subtract1"])) {
+                subtract1($_POST["itemName"], $_POST["itemQuantity"]);
+            }
+        ?>
+    </body>
+</html>

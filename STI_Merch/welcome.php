@@ -30,7 +30,7 @@
                         itemDesc VARCHAR(200) NOT NULL,
                         price INT NOT NULL,
                         stocks INT(5) NOT NULL,
-                        imageDir VARCHAR(100) NOT NULL
+                        imageName VARCHAR(100) NOT NULL
                         );";
             $db = new mysqli($servername, $username, $password, $dbName);
             $_SESSION["db"] = $db;

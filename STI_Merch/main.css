@@ -3,15 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.selectionContainerBox{
+    padding: 2%;
+}
 .selectionContainer {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 25% 25% 25% 25%;
     width: auto;
 }
 .selectionContainer>a {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     margin: 5%;
     text-align: left;
 }
@@ -61,4 +63,11 @@ header {
 
 .logout:hover {
     background-color: #72A0C1;
+}
+#itemPic{
+    max-width: 100%;
+    height: auto;
+}
+#itemDesc{
+    padding: 10%;
 }
