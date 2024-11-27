@@ -18,7 +18,7 @@
         <div class="user"><h1>Welcome Admin</h1></div>
         
         <form method="post" class="listItem" enctype="multipart/form-data">
-            <h3>List an Item</h3>
+            <h3>List an Item</h3><br>
             <label for="itemName">Item Name:</label>
             <input type="text" id="itemName" name="itemName" required><br>
             <label for="itemDesc">Item Description:</label>
@@ -26,9 +26,9 @@
             <label for="price">Price:</label>
             <input type="int" id="price" name="price" required><br>
             <label for="stocks">Stocks:</label>
-            <input type="int" id="stocks" name="stocks" required><br>
+            <input type="int" id="stocks" name="stocks" required><br><br>
             <label for="image">Image:</label>
-            <input type="file" id="image" name="image" required><br>
+            <input type="file" id="image" name="image" required><br><br>
             <button name="listItem">List Item</button>
         </form>
 
