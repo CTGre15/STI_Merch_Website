@@ -13,10 +13,16 @@
         <script src="functions.js"></script>
     </head>
     <body>
+        <header>
+            <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
+            <div class="title"> <h1>STI Merch Store</h1> </div>
+            <form method="post">
+                <button name="logout" class="logout">Log out</button>
+            </form>
+        </header>
+
         <h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
-        <form method="post">
-            <button name="logout">Log out</button>
-        </form>
+        
         <form method="post">
             <button name="browseSelection">Return to Browse Selection</button>
         </form>
