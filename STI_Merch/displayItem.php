@@ -9,7 +9,7 @@
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="displayItem.css">
         <script src="functions.js"></script>
     </head>
     <body>
@@ -21,20 +21,25 @@
             <button name="browseSelection">Return to Browse Selection</button>
         </form>
         <h2><?php echo $_GET["itemName"]; ?></h2>
+        <div class="itemInfo">
         <?php
             $displayItemQuery = "SELECT * FROM Items WHERE itemName = '" . $_GET["itemName"] . "'";
             $result = mysqli_query($_SESSION['db'], $displayItemQuery);
     
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='itemImage'> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
+                    echo "<div class='itemDesc'>";
                     echo "<div id='itemName'>" . $row["itemName"] . "</div><br>";
                     echo $row["itemDesc"] . "<br>";
                     echo "₱" . $row["price"] . "<br>";
                     echo "Stocks: " . $row["stocks"] . "<br>";
                     echo "On Cart: " . getCartQuantity($row["itemName"]);
+                    echo "</div>";
                 }
             }
         ?>
+        </div>
         <form method="post">
             <button name="addToCart">Add to Cart</button>
         </form>
