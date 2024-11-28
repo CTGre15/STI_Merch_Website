@@ -7,7 +7,7 @@
 header {
     display: flex;
     background-color: white;
-    border-bottom: 5px double #ccc;
+    border-bottom: 5px double #FFEB80;
 }
 
 .logo {
@@ -37,7 +37,7 @@ header {
     font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
-    margin: 20px 0 0 970px;
+    margin: 20px 0 0 950px;
 }
 
 .logout:hover {
@@ -48,6 +48,24 @@ header {
     display: grid;
     grid-template-columns: 45% 45%;
     width: auto;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    margin-top: 1%;
+    border-radius: 10px;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: #002244;
+}
+
+.itemName {
+    font-size: 30px;
+    color: white;
+}
+
+#itemName {
+    font-size: 25px;
 }
 
 .itemInfo>div {
@@ -58,7 +76,70 @@ header {
 .itemInfo>div>img {
     width: 300px;
     height: auto;
+    border-radius: 10px;
 }
 
+.user {
+    padding: 3% 1% 1% 5%;
+    color: #002244;
+    font-size: 40px;
+}
 
+.top-container {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    width: auto;
+}
 
+.browseSelection {
+    align-items: end;
+    justify-items: end;
+    padding: 2% 0 1% 0;
+}
+
+.browseSelection button {
+    width: 75%;
+    padding: 2%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #EE4B2B;
+    color: white;
+    font-size: 18px;
+}
+
+.browseSelection button:hover {
+    background-color: #880808;
+    cursor: pointer;
+}
+
+.item-container {
+    border: 1px solid #ccc;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 10px;
+    align-items: center;
+    justify-items: center;
+    background-color: #002244;
+}
+
+.addToCart {
+    align-items: center;
+    justify-items: center;
+}
+
+.addToCart button {
+    width: 100%;
+    padding: 10%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 100%;
+}
+
+.addToCart button:hover {
+    cursor: pointer;
+    background-color: #76d872;
+    width: 100%;
+}

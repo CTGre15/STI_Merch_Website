@@ -21,12 +21,18 @@
             </form>
         </header>
 
-        <h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
+        <div class="top-container">
+            <h1 class="user">Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
         
-        <form method="post">
-            <button name="browseSelection">Return to Browse Selection</button>
-        </form>
-        <h2><?php echo $_GET["itemName"]; ?></h2>
+            <div class="browseSelection">
+                <form method="post">
+                    <button   button name="browseSelection">Return to Browse Selection</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="item-container">
+        <h2 class="itemName"><?php echo $_GET["itemName"]; ?></h2>
         <div class="itemInfo">
         <?php
             $displayItemQuery = "SELECT * FROM Items WHERE itemName = '" . $_GET["itemName"] . "'";
@@ -37,18 +43,22 @@
                     echo "<div class='itemImage'> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
                     echo "<div class='itemDesc'>";
                     echo "<div id='itemName'>" . $row["itemName"] . "</div><br>";
-                    echo $row["itemDesc"] . "<br>";
-                    echo "₱" . $row["price"] . "<br>";
-                    echo "Stocks: " . $row["stocks"] . "<br>";
+                    echo $row["itemDesc"] . "<br><br>";
+                    echo "₱" . $row["price"] . "<br><br>";
+                    echo "Stocks: " . $row["stocks"] . "<br><br>";
                     echo "On Cart: " . getCartQuantity($row["itemName"]);
                     echo "</div>";
                 }
             }
         ?>
         </div>
-        <form method="post">
-            <button name="addToCart">Add to Cart</button>
-        </form>
+        </div>
+        
+        <div class="addToCart">
+            <form method="post">
+                <button name="addToCart">Add to Cart</button>
+            </form>
+        </div>
         <?php
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
