@@ -37,7 +37,7 @@ header {
     font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
-    margin: 20px 0 0 970px;
+    margin: 20px 0 0 960px;
 }
 
 .logout:hover {
@@ -69,6 +69,7 @@ header {
     background-color: white;
     border-radius: 10px;
     padding: 5%;
+    color: #002244;
 }
 
 .selectionContainer>a:hover {

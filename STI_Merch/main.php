@@ -35,10 +35,10 @@
                             echo "<a class='clickable' href='displayItem.php?itemName=" . $row["itemName"] . "'>";
                             echo "<div> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
                             echo "<div id='itemDesc'>";
-                            echo $row["itemName"] . "<br><hr><br>";
+                            echo "<b style='font-size: 18px'>" . $row["itemName"] . "</b><br><hr><br>";
                             echo $row["itemDesc"] . "<br><hr><br>";
-                            echo "₱" . $row["price"] . "<br><hr><br>";
-                            echo "Stocks: " . $row["stocks"] . "<br><hr><br>";
+                            echo "<span style='color: #EE4B2B;'>₱" . $row["price"] . "</span><br><hr><br>";
+                            echo "<span style='color: #008000'>Stocks: " . $row["stocks"] . "</span><br><hr><br>";
                             echo "</div>";
                             echo "</a>";
                         }

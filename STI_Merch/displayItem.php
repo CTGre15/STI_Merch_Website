@@ -42,11 +42,11 @@
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='itemImage'> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
                     echo "<div class='itemDesc'>";
-                    echo "<div id='itemName'>" . $row["itemName"] . "</div><br>";
+                    echo "<div id='itemName'><b>" . $row["itemName"] . "</b></div><br>";
                     echo $row["itemDesc"] . "<br><br>";
-                    echo "₱" . $row["price"] . "<br><br>";
+                    echo "<span style='color: #EE4B2B'>₱" . $row["price"] . "</span><br><br>";
                     echo "Stocks: " . $row["stocks"] . "<br><br>";
-                    echo "On Cart: " . getCartQuantity($row["itemName"]);
+                    echo "<span style='color: #008000;'>On Cart: " . getCartQuantity($row["itemName"]) . "</span>";
                     echo "</div>";
                 }
             }
