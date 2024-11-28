@@ -21,9 +21,9 @@
             </form>
         </header>
 
-        <h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
+        <h1 class="user">Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
 
-        <h3>Browse our selection</h3>
+        <h3 class="browseItem">Browse our selection:</h3>
         <div class="selectionContainerBox">
             <div class="selectionContainer">
                 <?php
@@ -35,10 +35,10 @@
                             echo "<a class='clickable' href='displayItem.php?itemName=" . $row["itemName"] . "'>";
                             echo "<div> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
                             echo "<div id='itemDesc'>";
-                            echo $row["itemName"] . "<br>";
-                            echo $row["itemDesc"] . "<br>";
-                            echo "₱" . $row["price"] . "<br>";
-                            echo "Stocks: " . $row["stocks"] . "<br>";
+                            echo $row["itemName"] . "<br><hr>";
+                            echo $row["itemDesc"] . "<br><hr>";
+                            echo "₱" . $row["price"] . "<br><hr>";
+                            echo "Stocks: " . $row["stocks"] . "<br><hr>";
                             echo "</div>";
                             echo "</a>";
                         }
@@ -46,9 +46,11 @@
                 ?>
             </div>
         </div>
-        <form method="post">
-            <button name="viewCart">View My Cart</button>
-        </form>
+        <div class="viewCart">
+            <form method="post">
+                <button name="viewCart">View My Cart</button>
+            </form>
+        </div>
         <?php
             function logout(){
                 session_destroy();

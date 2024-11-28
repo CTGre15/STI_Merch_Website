@@ -3,32 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-.selectionContainerBox{
-    padding: 2%;
-}
-.selectionContainer {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    width: auto;
-}
-.selectionContainer>a {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin: 5%;
-    text-align: left;
-}
-.selectionContainer>a:hover {
-    background: lightblue;
-}
-.clickable {
-    color: black; 
-    text-decoration:none;
-}
 
 header {
     display: flex;
     background-color: white;
-    border-bottom: 5px double #ccc;
+    border-bottom: 5px double #FFEB80;
 }
 
 .logo {
@@ -64,10 +43,82 @@ header {
 .logout:hover {
     background-color: #72A0C1;
 }
+
+.selectionContainerBox{
+    padding: 0 2% 2% 2%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 1% 2% 2% 2%;
+    background-color: #002D62;
+
+}
+
+.selectionContainer {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectionContainer>a {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 5%;
+    text-align: left;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5%;
+}
+
+.selectionContainer>a:hover {
+    background: lightblue;
+    border-radius: 10px;
+}
+
+.clickable {
+    color: black; 
+    text-decoration:none;
+}
+
 #itemPic{
     max-width: 100%;
     height: auto;
+    border-radius: 10px;
 }
+
 #itemDesc{
     padding: 10%;
+}
+
+.user {
+    padding: 1%;
+    color: #002244;
+    font-size: 40px;
+}
+
+.browseItem {
+    padding: 1% 1% 0 1%;
+    font-size: 30px;
+    color: #002244;
+}
+
+.viewCart {
+    align-items: center;
+    justify-items: center;
+}
+
+.viewCart button {
+    width: 100%;
+    padding: 10%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+}
+
+.viewCart button:hover {
+    cursor: pointer;
+    background-color: #45a049;
 }
