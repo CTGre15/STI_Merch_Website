@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #002D62;
+}
+
 header {
     display: flex;
     background-color: white;
@@ -49,7 +53,7 @@ header {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #FFFFAD;
+    background-color: white;
 }
 
 input[type="text"], input[type="int"] {
@@ -79,8 +83,6 @@ input[type="text"], input[type="int"] {
     font-size: 25px;
     text-align: center;
     padding: 20px;
-    color: #002244;
-    border-top: 5px double #ccc;
-    background-color: white;
+    color: white;
 }
 
