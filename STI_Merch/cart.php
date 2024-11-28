@@ -21,11 +21,17 @@
             </form>
         </header>
 
-        <h1>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
+        <div class="top-container">
+            <h1 class="user">Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
         
-        <form method="post">
-            <button name="browseSelection">Return to Browse Selection</button>
-        </form>
+            <div class="browseSelection">
+                <form method="post">
+                    <button   button name="browseSelection">Return to Browse Selection</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="big-container">
         <h2>My cart</h2>
         <div class="cartContainer">
             <div><b>Item</b></div>
@@ -47,35 +53,41 @@
                         echo $row["itemName"];
                         echo "</div>";
                         echo "<div>";
-                        echo "₱" . $itemPrice;
+                        echo "<span style='color: #EE4B2B;'>₱" . $itemPrice . "</span>";
                         echo "</div>";
                         echo "<div class='cartItemQuantity'>";
                         echo "<form method='post'>
                                 <div><button name='subtract1'>-</button></div>
                                 <input type='hidden' name='itemName' value='" . $row["itemName"] . "'>
                                 <input type='hidden' name='itemQuantity' value='" . $quantity . "'>
-                                <div>" . $quantity . "</div>
+                                <div><span style='color: #008000;'>" . $quantity . "</span></div>
                                 <div><button name='add1'>+</button></div>
                             </form>";
                         echo "</div>";
                         echo "<div>";
-                        echo "₱" . $price;
+                        echo "<span style='color: #FF5700;'>₱" . $price . "</span>";
                         echo "</div>";
                         $_SESSION["checkoutPrice"] = $_SESSION["checkoutPrice"] + $price;
                     }
                 }
                 ?>
         </div>
+        </div>
+        
         <?php
             $totalPayment = $_SESSION["checkoutPrice"] + 50;
 
-            echo "<h4>Payment Details</h4>";
-            echo "Merchandise Subtotal: " . $_SESSION["checkoutPrice"] . "<br>";
-            echo "Shipping Subtotal: 50";
-            echo "<h5>Total Payment: " . $totalPayment . "</h5>";
+            echo "<div class='payment-container'>";
+            echo "<div class='paymentDetails'>";
+            echo "<h4>Payment Details</h4><br>";
+            echo "Merchandise Subtotal: ₱" . $_SESSION["checkoutPrice"] . "<br><br>";
+            echo "Shipping Subtotal: ₱50<br><br><hr><br>";
+            echo "<h5>Total Payment: ₱" . $totalPayment . "</h5><br>";
             echo "<form method='post'>
                     <button name='checkout'>Place Order</button>
                 </form>";
+            echo "</div>";
+            echo "</div>";
 
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
