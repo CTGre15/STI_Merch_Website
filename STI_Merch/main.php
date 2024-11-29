@@ -16,7 +16,7 @@
         <header>
             <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
             <div class="title"> <h1>STI Merch Store</h1> </div>
-            <form method="post">
+            <form method="post" class="logout-container">
                 <button name="logout" class="logout">Log out</button>
             </form>
         </header>

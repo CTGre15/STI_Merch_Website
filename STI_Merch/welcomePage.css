@@ -47,16 +47,20 @@ input[type="submit"]:hover, #registerform input[type="submit"]:hover {
 }
 
 header {
-    display: flex;
     background-color: white;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+    justify-items: end;
 }
 
 .logo {
     padding: 10px;
+    margin-right: 20%;
 }
 
 .title {
-    padding: 15px 0 0 30px; 
+    margin-right: 73%;
 }
 
 .title h1 {
@@ -108,6 +112,10 @@ header {
     cursor: pointer;
 }
 
+.login {
+    margin-right: 7%;
+}
+
 .login button {
     background-color: #00416A;
     border: none;
@@ -117,7 +125,6 @@ header {
     font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
-    margin: 20px 0 0 970px;
 }
 
 .login button:hover {

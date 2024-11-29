@@ -5,17 +5,21 @@
 }
 
 header {
-    display: flex;
     background-color: white;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+    justify-items: end;
     border-bottom: 5px double #FFEB80;
 }
 
 .logo {
     padding: 10px;
+    margin-right: 20%;
 }
 
 .title {
-    padding: 15px 0 0 30px; 
+    margin-right: 73%;
 }
 
 .title h1 {
@@ -28,6 +32,10 @@ header {
     height: auto;
 }
 
+.logout-container {
+    margin-right: 7%;
+}
+
 .logout {
     background-color: #00416A;
     border: none;
@@ -37,7 +45,6 @@ header {
     font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
-    margin: 20px 0 0 960px;
 }
 
 .logout:hover {

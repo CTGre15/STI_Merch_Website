@@ -5,17 +5,21 @@
 }
 
 header {
-    display: flex;
     background-color: white;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+    justify-items: end;
     border-bottom: 5px double #FFEB80;
 }
 
 .logo {
     padding: 10px;
+    margin-right: 20%;
 }
 
 .title {
-    padding: 15px 0 0 30px; 
+    margin-right: 73%;
 }
 
 .title h1 {
@@ -28,6 +32,10 @@ header {
     height: auto;
 }
 
+.logout-container {
+    margin-right: 7%;
+}
+
 .logout {
     background-color: #00416A;
     border: none;
@@ -37,7 +45,6 @@ header {
     font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
-    margin: 20px 0 0 950px;
 }
 
 .logout:hover {
@@ -80,21 +87,21 @@ header {
 }
 
 .user {
-    padding: 3% 1% 1% 5%;
     color: #002244;
     font-size: 40px;
+    margin: 1% 12% 0 0;
 }
 
 .top-container {
     display: grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 25% 75%;
     width: auto;
+    align-items: center;
+    justify-items: end;
 }
 
 .browseSelection {
-    align-items: end;
-    justify-items: end;
-    padding: 2% 0 1% 0;
+    margin-top: 1%;
 }
 
 .browseSelection button {
@@ -135,7 +142,7 @@ header {
     background-color: #4CAF50;
     color: white;
     font-size: 18px;
-    margin-bottom: 50%;
+    margin-bottom: 25%;
 }
 
 .addToCart button:hover {
