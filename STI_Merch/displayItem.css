@@ -89,12 +89,12 @@ header {
 .user {
     color: #002244;
     font-size: 40px;
-    margin: 1% 12% 0 0;
+    margin: 1% 27% 0 0;
 }
 
 .top-container {
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 35% 65%;
     width: auto;
     align-items: center;
     justify-items: end;
