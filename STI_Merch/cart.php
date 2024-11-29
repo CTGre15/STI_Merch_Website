@@ -21,15 +21,13 @@
             </form>
         </header>
 
-        <div class="top-container">
-            <h1 class="user">Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
-        
-            <div class="browseSelection">
-                <form method="post">
-                    <button   button name="browseSelection">Return to Browse Selection</button>
-                </form>
-            </div>
+        <div class="browseSelection">
+            <form method="post">
+                <button   button name="browseSelection">Return to Browse Selection</button>
+            </form>
         </div>
+
+        <h1 class="user">Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
 
         <div class="big-container">
         <h2>My cart</h2>
