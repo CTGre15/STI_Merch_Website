@@ -114,6 +114,7 @@ header {
 .viewCart {
     align-items: center;
     justify-items: center;
+    margin-bottom: 5%;
 }
 
 .viewCart button {

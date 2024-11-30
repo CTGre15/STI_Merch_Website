@@ -127,6 +127,7 @@ header {
 .addToCart {
     align-items: center;
     justify-items: center;
+    margin-bottom: 5%;
 }
 
 .addToCart button {
@@ -137,7 +138,6 @@ header {
     background-color: #4CAF50;
     color: white;
     font-size: 18px;
-    margin-bottom: 25%;
 }
 
 .addToCart button:hover {

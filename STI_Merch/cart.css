@@ -119,6 +119,7 @@ header {
 
 .paymentDetails {
     font-size: 20px;
+    margin-bottom: 5%;
 }
 
 .paymentDetails button {
@@ -129,7 +130,7 @@ header {
     background-color: #4CAF50;
     color: white;
     font-size: 18px;
-    margin: 5% 0 25% 24%;
+    margin: 5% 0 0 24%;
 }
 
 .paymentDetails button:hover {
