@@ -170,7 +170,7 @@
                         <input type="text" id="loginemail" name="loginemail" required><br>
                         <label for="loginpassword">Password:</label>
                         <input type="password" id="loginpassword" name="loginpassword" required><br>
-                        <input type="checkbox" onclick="showLoginPassword()" style="margin-left: 160px"><span style="font-size: 13px;">Show Password</span><br><br>
+                        <input type="checkbox" onclick="showLoginPassword()" class="showPassword"><span style="font-size: 0.813rem;">Show Password</span><br><br>
                         <input type="submit" name="login" value="Log in"><br><br>
 
                         <div class="changeForm">Don't have an account yet? <a href="#" onclick="openModal('registerModal'); closeModal('loginModal'); return false;">Register</a>.</div>
@@ -192,7 +192,7 @@
                         <input type="text" id="registeremail" name="registeremail" required><br>
                         <label for="registerpassword">Password:</label>
                         <input type="password" id="registerpassword" name="registerpassword" required><br>
-                        <input type="checkbox" onclick="showRegisterPassword()" style="margin-left: 160px"><span style="font-size: 13px;">Show Password</span><br><br>
+                        <input type="checkbox" onclick="showRegisterPassword()" class="showPassword"><span style="font-size: 0.813rem;">Show Password</span><br><br>
                         <input type="submit" name="register" value="Register"><br><br>
 
                         <div class="changeForm">Already have an account? <a href="#" onclick="openModal('loginModal'); closeModal('registerModal'); return false;">Log in</a>.</div>

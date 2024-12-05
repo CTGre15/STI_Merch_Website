@@ -4,36 +4,45 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
 header {
     background-color: white;
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: auto auto 1fr auto;
     align-items: center;
-    justify-items: end;
+    justify-items: center;
     border-bottom: 5px double #FFEB80;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
     padding: 10px;
-    margin-right: 20%;
 }
 
 .title {
-    margin-right: 73%;
+    text-align: left;
+    padding-left: 1rem;
 }
 
 .title h1 {
-    font-size: 45px;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: #00416A;
 }
 
 .logo img {
-    width: 100px;
+    width: clamp(50px, 10vw, 100px);
     height: auto;
 }
 
 .logout-container {
-    margin-right: 7%;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .logout {
@@ -41,10 +50,12 @@ header {
     border: none;
     border-radius: 15px;
     padding: 10px;
-    font-size: 20px;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .logout:hover {
@@ -53,26 +64,34 @@ header {
 
 .cartContainer {
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    width: auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 1% auto;
     border: 3px solid #002244;
-    margin: 1%;
-    width: 50%;
-} 
-.cartContainer>div {
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.cartContainer > div {
     margin: 5%;
     text-align: center;
 }
-.cartItemQuantity>form{
+
+.cartItemQuantity > form {
     display: grid;
     grid-template-columns: auto auto auto;
-    width: auto;
-    padding: 0 30%;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
 }
 
 .user {
     color: #002244;
-    font-size: 40px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     margin-left: 1%;
 }
 
@@ -91,6 +110,7 @@ header {
     background-color: #EE4B2B;
     color: white;
     font-size: 18px;
+    transition: background-color 0.3s ease;
 }
 
 .browseSelection button:hover {
@@ -99,27 +119,33 @@ header {
 }
 
 .big-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-items: center;
     justify-content: center;
     color: #002244;
     font-size: 20px;
+    padding: 1rem;
 }
 
 .big-container h2 {
-    font-size: 35px;
-    margin: 2% 0 2% 0;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin: 2% 0;
 }
 
 .payment-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     color: #002244;
+    padding: 1rem;
 }
 
 .paymentDetails {
     font-size: 20px;
     margin-bottom: 5%;
+    text-align: center;
 }
 
 .paymentDetails button {
@@ -130,7 +156,8 @@ header {
     background-color: #4CAF50;
     color: white;
     font-size: 18px;
-    margin: 5% 0 0 24%;
+    margin: 5% auto 0;
+    transition: background-color 0.3s ease;
 }
 
 .paymentDetails button:hover {
@@ -147,4 +174,71 @@ header {
 .paymentDetails h5 {
     font-size: 20px;
     color: #EE4B2B;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    header {
+        grid-template-columns: auto 1fr auto;
+        padding: 0.5rem;
+    }
+
+    .title {
+        text-align: left;
+        padding-left: 0.5rem;
+    }
+
+    .logout-container {
+        margin-right: 5%;
+    }
+
+    .cartContainer {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0.5rem;
+    }
+
+    .cartItemQuantity > form {
+        grid-template-columns: auto;
+        gap: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto auto;
+    }
+
+    .logo {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .title {
+        grid-row: 1;
+        grid-column: 2;
+        text-align: left;
+        padding-left: 0.5rem;
+    }
+
+    .logout-container {
+        grid-row: 1;
+        grid-column: 3;
+        justify-self: end;
+        margin-right: 3%;
+    }
+
+    .cartContainer {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+    }
+
+    .cartItemQuantity > form {
+        grid-template-columns: auto;
+        gap: 0.5rem;
+    }
+
+    .paymentDetails button {
+        width: 100%;
+    }
 }

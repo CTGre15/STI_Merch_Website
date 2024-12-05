@@ -4,36 +4,45 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
 header {
     background-color: white;
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: auto auto 1fr auto;
     align-items: center;
-    justify-items: end;
+    justify-items: center;
     border-bottom: 5px double #FFEB80;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
     padding: 10px;
-    margin-right: 20%;
 }
 
 .title {
-    margin-right: 73%;
+    text-align: left;
+    padding-left: 1rem;
 }
 
 .title h1 {
-    font-size: 45px;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: #00416A;
 }
 
 .logo img {
-    width: 100px;
+    width: clamp(50px, 10vw, 100px);
     height: auto;
 }
 
 .logout-container {
-    margin-right: 7%;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .logout {
@@ -41,79 +50,90 @@ header {
     border: none;
     border-radius: 15px;
     padding: 10px;
-    font-size: 20px;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .logout:hover {
     background-color: #72A0C1;
 }
 
-.selectionContainerBox{
-    padding: 2%;
+.selectionContainerBox {
+    padding: 1%;
     border: 1px solid #ccc;
     border-radius: 10px;
-    margin: 1% 2% 1% 2%;
+    margin: 1% 2%;
     background-color: #002D62;
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .selectionContainer {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    width: auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
     align-items: center;
     justify-content: center;
 }
 
-.selectionContainer>a {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin: 5%;
-    text-align: left;
+.selectionContainer > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem;
+    text-align: center;
     background-color: white;
     border-radius: 10px;
-    padding: 5%;
+    padding: 1rem;
     color: #002244;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.selectionContainer>a:hover {
+.selectionContainer > a:hover {
     background: lightblue;
-    border-radius: 10px;
+    transform: translateY(-5px);
 }
 
 .clickable {
     color: black; 
-    text-decoration:none;
+    text-decoration: none;
 }
 
-#itemPic{
-    max-width: 100%;
+#itemPic {
+    max-width: 80%;
     height: auto;
     border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
-#itemDesc{
-    padding: 10%;
+#itemDesc {
+    padding: 0.5rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
 }
 
 .user {
     padding: 1%;
     color: #002244;
-    font-size: 40px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-align: left;
 }
 
 .browseItem {
     padding: 1% 1% 0 1%;
-    font-size: 30px;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     color: #002244;
+    text-align: left;
 }
 
 .viewCart {
+    display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     margin-bottom: 5%;
 }
 
@@ -125,9 +145,69 @@ header {
     background-color: #4CAF50;
     color: white;
     font-size: 18px;
+    transition: background-color 0.3s ease;
 }
 
 .viewCart button:hover {
     cursor: pointer;
     background-color: #45a049;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    header {
+        grid-template-columns: auto auto 1fr auto;
+        padding: 0.5rem;
+    }
+
+    .title {
+        padding-left: 0.5rem;
+    }
+
+    .logout-container {
+        margin-right: 5%;
+    }
+
+    .selectionContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto auto;
+    }
+
+    .logo {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .title {
+        grid-row: 1;
+        grid-column: 2;
+        text-align: left;
+        padding-left: 0.5rem;
+    }
+
+    .logout-container {
+        grid-row: 1;
+        grid-column: 3;
+        justify-self: end;
+        margin-right: 3%;
+    }
+
+    .selectionContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        margin: 10% auto;
+        padding: 1rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
 }
