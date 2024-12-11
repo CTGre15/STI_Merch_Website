@@ -24,9 +24,9 @@
             <label for="itemDesc">Item Description:</label>
             <input type="text" id="itemDesc" name="itemDesc" required><br>
             <label for="price">Price:</label>
-            <input type="int" id="price" name="price" required><br>
+            <input type="number" id="price" name="price" required><br>
             <label for="stocks">Stocks:</label>
-            <input type="int" id="stocks" name="stocks" required><br><br>
+            <input type="number" id="stocks" name="stocks" required><br><br>
             <label for="image">Image:</label>
             <input type="file" id="image" name="image" required><br><br>
             <button name="listItem">List Item</button>

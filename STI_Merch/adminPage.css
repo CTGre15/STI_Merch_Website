@@ -1,3 +1,4 @@
+/* General styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,146 +6,168 @@
 }
 
 body {
-    background-color: #002D62;
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
+/* Header styles */
 header {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 5px 10px; /* Minimized padding */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 5px; /* Move header downwards */
+    left: 0;
+    z-index: 1000;
 }
 
 .logo {
-    padding: 0.5rem;
+    padding: 5px;
 }
 
 .title {
     text-align: left;
+    padding-left: 0.5rem;
 }
 
 .title h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Minimized font size */
     color: #00416A;
 }
 
 .logo img {
-    width: clamp(50px, 10vw, 100px);
+    width: clamp(30px, 6vw, 60px); /* Minimized logo size */
     height: auto;
 }
 
 .logout-container {
-    display: flex;
-    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .logout {
     background-color: #00416A;
     border: none;
     border-radius: 15px;
-    padding: 0.5rem 1rem;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    padding: 5px 10px;
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
+    font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .logout:hover {
     background-color: #72A0C1;
-    transform: scale(1.05);
 }
 
+/* User greeting */
+.user {
+    margin-top: 115px; /* Adjust for fixed header */
+    text-align: center;
+    font-size: 1.5rem;
+    color: #00416A;
+}
+
+/* List item form */
 .listItem {
-    width: 90%;
-    max-width: 400px;
-    margin: 1rem auto;
-    padding: 1rem;
-    border: 1px solid #ccc;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
     border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
-.listItem:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.listItem h3 {
+    font-size: 1.5rem;
+    color: #00416A;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-input[type="text"], input[type="int"] {
+.listItem label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.listItem input[type="text"],
+.listItem input[type="number"],
+.listItem input[type="file"] {
     width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.625rem;
-    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 1rem;
 }
 
 .listItem button {
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.625rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #00416A;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
     font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
 }
 
 .listItem button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-}
-
-.user {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-    text-align: center;
-    padding: 1rem;
-    color: white;
+    background-color: #72A0C1;
 }
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
     header {
         grid-template-columns: auto 1fr auto;
-        grid-template-rows: auto auto;
-        text-align: center;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+    
+    .title {
+        grid-column: 2;
+        padding-left: 0;
+    }
+    
+    .logout-container {
+        grid-column: 3;
+        margin-right: 5%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto;
+    }
+    
+    .logo {
+        grid-row: 1;
+        grid-column: 1;
     }
 
     .title {
         grid-row: 1;
         grid-column: 2;
-        text-align: center;
+        text-align: left;
+        padding-left: 0.5rem;
     }
-
+    
     .logout-container {
         grid-row: 1;
         grid-column: 3;
-        justify-content: flex-end;
-    }
-
-    .logo {
-        grid-row: 1;
-        grid-column: 1;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .listItem {
-        width: 95%;
-        padding: 0.75rem;
-    }
-
-    input[type="text"], input[type="int"], .listItem button {
-        padding: 0.5rem;
-        font-size: 0.9rem;
+        justify-self: end;
+        margin-right: 3%;
     }
 }
