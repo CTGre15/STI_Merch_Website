@@ -159,7 +159,24 @@
             <div class="login"> <button onclick="openModal('loginModal')">Log in</button> </div>
         </header>
 
-        <div class="section1"> <img src="images/welcome.png" alt="Welcome STIers"> </div>
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="image-container" style="background-image: url('images/welcome.png');"></div>
+            </div>
+            <div class="mySlides fade">
+                <div class="image-container" style="background-image: url('images/welcome2.jpg');"></div>
+            </div>
+            <div class="mySlides fade">
+                <div class="image-container" style="background-image: url('images/welcome3.png');"></div>
+            </div>
+        </div>
+        <br>
+        <div style="text-align:center">
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+        </div>
 
         <div id="loginModal" class="modal">
             <div class="modal-content">
@@ -170,7 +187,10 @@
                         <input type="text" id="loginemail" name="loginemail" required><br>
                         <label for="loginpassword">Password:</label>
                         <input type="password" id="loginpassword" name="loginpassword" required><br>
-                        <input type="checkbox" onclick="showLoginPassword()" class="showPassword"><span style="font-size: 0.813rem;">Show Password</span><br><br>
+                        <div class="showPassword">
+                            <input type="checkbox" onclick="showLoginPassword()">
+                            <span>Show Password</span>
+                        </div>
                         <input type="submit" name="login" value="Log in"><br><br>
 
                         <div class="changeForm">Don't have an account yet? <a href="#" onclick="openModal('registerModal'); closeModal('loginModal'); return false;">Register</a>.</div>
@@ -192,7 +212,10 @@
                         <input type="text" id="registeremail" name="registeremail" required><br>
                         <label for="registerpassword">Password:</label>
                         <input type="password" id="registerpassword" name="registerpassword" required><br>
-                        <input type="checkbox" onclick="showRegisterPassword()" class="showPassword"><span style="font-size: 0.813rem;">Show Password</span><br><br>
+                        <div class="showPassword">
+                            <input type="checkbox" onclick="showRegisterPassword()">
+                            <span>Show Password</span>
+                        </div>
                         <input type="submit" name="register" value="Register"><br><br>
 
                         <div class="changeForm">Already have an account? <a href="#" onclick="openModal('loginModal'); closeModal('registerModal'); return false;">Log in</a>.</div>
@@ -207,4 +230,26 @@
                 regInfo();
             }
         ?>
+        <script>
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}    
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex-1].style.display = "block";  
+                dots[slideIndex-1].className += " active";
+                setTimeout(showSlides, 5000); // Change image every 5 seconds
+            }
+        </script>
     </body>
+</html>
