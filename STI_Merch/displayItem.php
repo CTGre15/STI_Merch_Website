@@ -21,42 +21,45 @@
             </form>
         </header>
 
-        <div class="browseSelection">
-            <form method="post">
-                <button   button name="browseSelection">Return to Browse Selection</button>
-            </form>
-        </div>
-
-        <h1 class="user">Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="main.php#home">Home</a></li>
+                <li><a href="main.php#shop">Shop</a></li>
+                <li><a href="main.php#about">About</a></li>
+            </ul>
+            <div class="user-info">
+                <span>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></span>
+            </div>
+        </nav>
         
         <div class="item-container">
-        <h2 class="itemName"><?php echo $_GET["itemName"]; ?></h2>
-        <div class="itemInfo">
-        <?php
-            $displayItemQuery = "SELECT * FROM Items WHERE itemName = '" . $_GET["itemName"] . "'";
-            $result = mysqli_query($_SESSION['db'], $displayItemQuery);
-    
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='itemImage'> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
-                    echo "<div class='itemDesc'>";
-                    echo "<div id='itemName'><b>" . $row["itemName"] . "</b></div><br>";
-                    echo $row["itemDesc"] . "<br><br>";
-                    echo "<span style='color: #EE4B2B'>₱" . $row["price"] . "</span><br><br>";
-                    echo "Stocks: " . $row["stocks"] . "<br><br>";
-                    echo "<span style='color: #008000;'>On Cart: " . getCartQuantity($row["itemName"]) . "</span>";
-                    echo "</div>";
-                }
-            }
-        ?>
-        </div>
+            <div class="itemInfo">
+                <?php
+                    $displayItemQuery = "SELECT * FROM Items WHERE itemName = '" . $_GET["itemName"] . "'";
+                    $result = mysqli_query($_SESSION['db'], $displayItemQuery);
+            
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<div class='itemImage'> <img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'> </div>";
+                            echo "<div class='itemDetails'>";
+                            echo "<div id='itemName'><b>" . $row["itemName"] . "</b></div><br>";
+                            echo $row["itemDesc"] . "<br><br>";
+                            echo "<span style='color: #EE4B2B'>₱" . $row["price"] . "</span><br>";
+                            echo "Stocks: " . $row["stocks"] . "<br><br>";
+                            echo "<span style='color: #008000;'>On Cart: " . getCartQuantity($row["itemName"]) . "</span><br>";
+                            echo "<div class='addToCart'>";
+                            echo "<form method='post'>";
+                            echo "<button name='addToCart'>Add to Cart</button>";
+                            echo "</form>";
+                            echo "</div>";
+                            echo "</div>";
+                        }
+                    }
+                ?>
+            </div>
         </div>
         
-        <div class="addToCart">
-            <form method="post">
-                <button name="addToCart">Add to Cart</button>
-            </form>
-        </div>
         <?php
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
@@ -112,9 +115,6 @@
             function logout(){
                 session_destroy();
                 header("Location: welcome.php");
-            }
-            if(isset($_POST["browseSelection"])) {
-                header("Location: main.php");
             }
             if(isset($_POST["logout"])) {
                 logout();

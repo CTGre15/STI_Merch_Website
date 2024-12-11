@@ -1,3 +1,4 @@
+/* General styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,35 +9,40 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
+/* Header styles */
 header {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-items: center;
-    border-bottom: 5px double #FFEB80;
-    padding: 10px;
+    padding: 5px 10px; /* Minimized padding */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 5px; /* Move header downwards */
+    left: 0;
+    z-index: 1000;
 }
 
 .logo {
-    padding: 10px;
+    padding: 5px;
 }
 
 .title {
     text-align: left;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
 }
 
 .title h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Minimized font size */
     color: #00416A;
 }
 
 .logo img {
-    width: clamp(50px, 10vw, 100px);
+    width: clamp(30px, 6vw, 60px); /* Minimized logo size */
     height: auto;
 }
 
@@ -49,8 +55,8 @@ header {
     background-color: #00416A;
     border: none;
     border-radius: 15px;
-    padding: 10px;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    padding: 5px 10px;
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
     font-family: 'Times New Roman', Times, serif;
     color: white;
     cursor: pointer;
@@ -62,136 +68,208 @@ header {
     background-color: #72A0C1;
 }
 
+/* Navigation bar styles */
+.navbar {
+    background-color: #00416A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px; /* Minimized padding */
+    position: fixed;
+    width: 100%;
+    top: 60px; /* Adjust for minimized header */
+    left: 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Minimized gap */
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #72A0C1;
+}
+
+.user-info {
+    color: white;
+    font-size: 1rem;
+}
+
+/* Sections */
+section {
+    padding: 60px 20px; /* Adjust padding for sections */
+    margin-top: 75px; /* Adjust margin to avoid overlap with navbar */
+}
+
+/* Item container */
+.item-container {
+    max-width: 800px;
+    margin: 120px auto 20px auto; 
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
 .itemInfo {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    width: 90%;
-    max-width: 800px;
-    margin: 1% auto;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: white;
-    color: #002244;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 20px;
 }
 
-.itemName {
-    font-size: 30px;
-    color: white;
-}
-
-#itemName {
-    font-size: 25px;
-}
-
-.itemInfo > div {
-    margin: 5%;
-    text-align: center;
-}
-
-.itemInfo > div > img {
+.itemImage img {
     width: 100%;
-    max-width: 300px;
     height: auto;
+    border-radius: 10px; /* Add some border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.itemDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    text-align: center; /* Center align text */
 }
 
-.user {
-    color: #002244;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-left: 1%;
+.itemDetails #itemName {
+    font-size: 1.5rem;
+    color: #00416A;
+    margin-bottom: 10px;
+    font-family: 'Georgia', serif; /* Change font family */
 }
 
-.browseSelection {
-    margin-top: 1%;
-    width: auto;
-    align-items: center;
-    justify-items: end;
+.itemDesc {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.browseSelection button {
-    width: 75%;
-    padding: 2%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #EE4B2B;
-    color: white;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
+.itemPrice {
+    font-size: 1.2rem;
+    color: #EE4B2B;
+    margin-bottom: 20px;
 }
 
-.browseSelection button:hover {
-    background-color: #880808;
-    cursor: pointer;
-}
-
-.item-container {
-    border: 1px solid #ccc;
-    margin: 2% 2% 1% 2%;
-    padding: 2% 2% 4% 2%;
-    border-radius: 10px;
-    align-items: center;
-    justify-items: center;
-    background-color: #002244;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.itemStocks {
+    font-size: 1rem;
+    color: #008000;
+    margin-bottom: 20px;
 }
 
 .addToCart {
-    align-items: center;
-    justify-items: center;
-    margin-bottom: 5%;
+    text-align: center; /* Center align button */
+    margin-top: 20px;
 }
 
 .addToCart button {
-    width: 100%;
-    padding: 5%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #00416A;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
     color: white;
-    font-size: 18px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .addToCart button:hover {
-    cursor: pointer;
-    background-color: #76d872;
+    background-color: #72A0C1;
+}
+
+/* User greeting */
+.user {
+    margin-top: 115px; /* Adjust for fixed header and navbar */
+    text-align: center;
+    font-size: 1.5rem;
+    color: #00416A;
 }
 
 /* Media Queries */
+@media screen and (max-width: 1024px) {
+    .itemInfo {
+        grid-template-columns: 1fr; /* 1 column on smaller screens */
+    }
+
+    .itemDetails {
+        text-align: left; /* Align text to the left on smaller screens */
+    }
+
+    .addToCart {
+        text-align: center; /* Center align button on smaller screens */
+    }
+}
+
 @media screen and (max-width: 768px) {
     header {
         grid-template-columns: auto 1fr auto;
+        gap: 1rem;
         padding: 0.5rem;
     }
-
+    
     .title {
-        text-align: left;
-        padding-left: 0.5rem;
+        grid-column: 2;
+        padding-left: 0;
     }
-
+    
     .logout-container {
+        grid-column: 3;
         margin-right: 5%;
     }
-
+    
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        top: 60px; /* Adjust for minimized header */
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .user-info {
+        margin-top: 10px;
+    }
+    
     .itemInfo {
-        grid-template-columns: 1fr;
-        padding: 1rem;
+        grid-template-columns: 1fr; /* 1 column on smaller screens */
     }
 
-    .itemInfo > div {
-        margin: 2%;
+    .itemDetails {
+        text-align: left; /* Align text to the left on smaller screens */
+    }
+
+    .addToCart {
+        text-align: center; /* Center align button on smaller screens */
     }
 }
 
 @media screen and (max-width: 480px) {
     header {
         grid-template-columns: auto 1fr auto;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto;
     }
-
+    
     .logo {
         grid-row: 1;
         grid-column: 1;
@@ -203,28 +281,27 @@ header {
         text-align: left;
         padding-left: 0.5rem;
     }
-
+    
     .logout-container {
         grid-row: 1;
         grid-column: 3;
         justify-self: end;
         margin-right: 3%;
     }
-
+    
+    .navbar {
+        top: 60px; /* Adjust for minimized header */
+    }
+    
     .itemInfo {
-        grid-template-columns: 1fr;
-        padding: 1rem;
+        grid-template-columns: 1fr; /* 1 column on very small screens */
     }
 
-    .itemInfo > div {
-        margin: 2%;
+    .itemDetails {
+        text-align: left; /* Align text to the left on very small screens */
     }
 
-    .browseSelection button {
-        width: 100%;
-    }
-
-    .addToCart button {
-        padding: 3%;
+    .addToCart {
+        text-align: center; /* Center align button on very small screens */
     }
 }
