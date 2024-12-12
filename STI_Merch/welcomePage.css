@@ -13,6 +13,7 @@ body {
 
 /* Header styles */
 header {
+<<<<<<< HEAD
   background-color: rgba(255, 255, 255, 0.9);
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -25,6 +26,19 @@ header {
   left: 0;
   z-index: 1000;
   border-radius: 10px;
+=======
+    background-color: rgba(255, 255, 255, 0.9);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 5px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 10px; /* Move header upwards */
+    left: 0;
+    z-index: 1000;
+>>>>>>> 8767c3eccb6c56752e9eadbdeebdba279bcd2ae6
 }
 
 .logo {
