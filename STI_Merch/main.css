@@ -18,17 +18,17 @@ header {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    padding: 5px 10px; /* Minimized padding */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0.3125rem 0.625rem; /* Minimized padding */
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
-    top: 5px; /* Move header downwards */
+    top: 0.3125rem; /* Move header downwards */
     left: 0;
     z-index: 1000;
 }
 
 .logo {
-    padding: 5px;
+    padding: 0.3125rem;
 }
 
 .title {
@@ -42,20 +42,20 @@ header {
 }
 
 .logo img {
-    width: clamp(30px, 6vw, 60px); /* Minimized logo size */
+    width: clamp(1.875rem, 6vw, 3.75rem); /* Minimized logo size */
     height: auto;
 }
 
 .logout-container {
     margin-left: auto;
-    margin-right: 10px;
+    margin-right: 0.625rem;
 }
 
 .logout {
     background-color: #00416A;
     border: none;
-    border-radius: 15px;
-    padding: 5px 10px;
+    border-radius: 0.9375rem;
+    padding: 0.3125rem 0.625rem;
     font-size: clamp(0.7rem, 1.5vw, 1rem);
     font-family: 'Times New Roman', Times, serif;
     color: white;
@@ -74,19 +74,19 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10px; /* Minimized padding */
+    padding: 0.3125rem 0.625rem; /* Minimized padding */
     position: fixed;
     width: 100%;
-    top: 60px; /* Adjust for minimized header */
+    top: 3.75rem; /* Adjust for minimized header */
     left: 0;
     z-index: 999;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 15px; /* Minimized gap */
+    gap: 0.9375rem; /* Minimized gap */
 }
 
 .nav-links li {
@@ -111,24 +111,24 @@ header {
 
 /* Sections */
 section {
-    padding: 60px 20px; /* Adjust padding for sections */
-    margin-top: 75px; /* Adjust margin to avoid overlap with navbar */
+    padding: 3.75rem 1.25rem; /* Adjust padding for sections */
+    margin-top: 1.6875rem; /* Adjust margin to avoid overlap with navbar */
 }
 
 /* Home section grid */
 .home-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 2 columns */
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .slideshow-container {
     position: relative;
     max-width: 100%;
     margin: auto;
-    border-radius: 10px; /* Add some border radius */
+    border-radius: 0.625rem; /* Add some border radius */
     overflow: hidden; /* Hide overflow */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
 .mySlides {
@@ -139,7 +139,7 @@ section {
     width: 100%;
     height: auto;
     object-fit: cover; /* Ensure the images cover the container */
-    border-radius: 10px; /* Add some border radius */
+    border-radius: 0.625rem; /* Add some border radius */
 }
 
 .fade {
@@ -164,19 +164,19 @@ section {
     position: absolute;
     top: 50%;
     width: auto;
-    padding: 16px;
-    margin-top: -22px;
+    padding: 1rem;
+    margin-top: -1.375rem;
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 0.1875rem 0.1875rem 0;
     user-select: none;
 }
 
 .next {
     right: 0;
-    border-radius: 3px 0 0 3px;
+    border-radius: 0.1875rem 0 0 0.1875rem;
 }
 
 .prev:hover, .next:hover {
@@ -187,10 +187,10 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px;
+    padding: 1.25rem;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    border-radius: 0.625rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Add subtle shadow */
     text-align: center;
     height: auto; /* Match the height of the images */
 }
@@ -198,7 +198,7 @@ section {
 .welcome-text h3 {
     font-size: 2rem; /* Increase font size */
     color: #00416A;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     font-family: 'Georgia', serif; /* Change font family */
 }
 
@@ -206,24 +206,24 @@ section {
     font-size: 1.1rem; /* Increase font size */
     color: #333;
     font-family: 'Arial', sans-serif; /* Change font family */
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 /* About section styles */
 .about-container {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    padding: 1.25rem;
+    border-radius: 0.625rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Add subtle shadow */
     text-align: center;
-    max-width: 800px;
+    max-width: 50rem;
     margin: auto;
 }
 
 .about-title {
     font-size: 2rem;
     color: #00416A;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     font-family: 'Georgia', serif; /* Change font family */
 }
 
@@ -231,19 +231,19 @@ section {
     font-size: 1.1rem;
     color: #333;
     font-family: 'Arial', sans-serif; /* Change font family */
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .about-signature {
     font-size: 1.1rem;
     color: #00416A;
     font-family: 'Georgia', serif; /* Change font family */
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 /* User greeting */
 .user {
-    margin-top: 115px; /* Adjust for fixed header and navbar */
+    margin-top: 7.1875rem; /* Adjust for fixed header and navbar */
     text-align: center;
     font-size: 1.5rem;
     color: #00416A;
@@ -252,24 +252,24 @@ section {
 /* Browse items */
 .browseItem {
     text-align: left; /* Align text to the left */
-    font-size: 1.2rem;
+    font-size: 2.1rem;
     color: #00416A;
-    margin-top: 20px;
-    margin-left: 20px; /* Add some left margin */
+    margin-top: 1.25rem;
+    margin-left: 1.25rem; /* Add some left margin */
 }
 
 .selectionContainerBox {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .selectionContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 columns per row */
-    gap: 20px;
+    gap: 1.25rem;
     width: 90%;
-    max-width: 1200px;
+    max-width: 75rem;
 }
 
 .clickable {
@@ -279,45 +279,45 @@ section {
 
 .itemFrame {
     background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.625rem;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .itemFrame:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-0.3125rem);
+    box-shadow: 0.25rem 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
 }
 
 #itemPic {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0.0625rem solid #ddd;
 }
 
 #itemDesc {
-    padding: 10px;
+    padding: 0.625rem;
     text-align: center;
 }
 
 .itemName {
     font-size: 1.2rem;
     color: #00416A;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 .itemDesc {
     font-size: 0.9rem;
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 .itemPrice {
     font-size: 1rem;
     color: #EE4B2B;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 .itemStocks {
@@ -328,14 +328,14 @@ section {
 /* View Cart button */
 .viewCart {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .viewCart button {
     background-color: #00416A;
     border: none;
-    border-radius: 15px;
-    padding: 10px 20px;
+    border-radius: 0.9375rem;
+    padding: 0.625rem 1.25rem;
     font-size: 1rem;
     font-family: 'Times New Roman', Times, serif;
     color: white;
@@ -348,7 +348,7 @@ section {
 }
 
 /* Media Queries */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 48rem) {
     header {
         grid-template-columns: auto 1fr auto;
         gap: 1rem;
@@ -368,16 +368,16 @@ section {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
-        top: 60px; /* Adjust for minimized header */
+        top: 3.75rem; /* Adjust for minimized header */
     }
     
     .nav-links {
         flex-direction: column;
-        gap: 10px;
+        gap: 0.625rem;
     }
     
     .user-info {
-        margin-top: 10px;
+        margin-top: 0.625rem;
     }
     
     .selectionContainer {
@@ -389,7 +389,7 @@ section {
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 30rem) {
     header {
         grid-template-columns: auto 1fr auto;
         grid-template-rows: auto;
@@ -415,7 +415,7 @@ section {
     }
     
     .navbar {
-        top: 60px; /* Adjust for minimized header */
+        top: 3.75rem; /* Adjust for minimized header */
     }
     
     .selectionContainer {

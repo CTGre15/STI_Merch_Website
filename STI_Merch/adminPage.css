@@ -18,17 +18,17 @@ header {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    padding: 5px 10px; /* Minimized padding */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0.3125rem 0.625rem; /* Minimized padding */
+    box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
-    top: 5px; /* Move header downwards */
+    top: 0.3125rem; /* Move header downwards */
     left: 0;
     z-index: 1000;
 }
 
 .logo {
-    padding: 5px;
+    padding: 0.3125rem;
 }
 
 .title {
@@ -42,20 +42,20 @@ header {
 }
 
 .logo img {
-    width: clamp(30px, 6vw, 60px); /* Minimized logo size */
+    width: clamp(1.875rem, 6vw, 3.75rem); /* Minimized logo size */
     height: auto;
 }
 
 .logout-container {
     margin-left: auto;
-    margin-right: 10px;
+    margin-right: 0.625rem;
 }
 
 .logout {
     background-color: #00416A;
     border: none;
-    border-radius: 15px;
-    padding: 5px 10px;
+    border-radius: 0.9375rem;
+    padding: 0.3125rem 0.625rem;
     font-size: clamp(0.7rem, 1.5vw, 1rem);
     font-family: 'Times New Roman', Times, serif;
     color: white;
@@ -70,7 +70,7 @@ header {
 
 /* User greeting */
 .user {
-    margin-top: 115px; /* Adjust for fixed header */
+    margin-top: 4.1875rem; /* Adjust for fixed header */
     text-align: center;
     font-size: 1.5rem;
     color: #00416A;
@@ -78,24 +78,24 @@ header {
 
 /* List item form */
 .listItem {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
+    max-width: 37.5rem;
+    margin: 1.25rem auto;
+    padding: 1.25rem;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
 .listItem h3 {
     font-size: 1.5rem;
     color: #00416A;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     text-align: center;
 }
 
 .listItem label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.3125rem;
     font-weight: bold;
 }
 
@@ -103,17 +103,17 @@ header {
 .listItem input[type="number"],
 .listItem input[type="file"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 0.625rem;
+    margin-bottom: 1.25rem;
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.3125rem;
 }
 
 .listItem button {
     background-color: #00416A;
     border: none;
-    border-radius: 15px;
-    padding: 10px 20px;
+    border-radius: 0.9375rem;
+    padding: 0.625rem 1.25rem;
     font-size: 1rem;
     font-family: 'Times New Roman', Times, serif;
     color: white;
@@ -128,7 +128,7 @@ header {
 }
 
 /* Media Queries */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 48rem) {
     header {
         grid-template-columns: auto 1fr auto;
         gap: 1rem;
@@ -146,7 +146,7 @@ header {
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 30rem) {
     header {
         grid-template-columns: auto 1fr auto;
         grid-template-rows: auto;

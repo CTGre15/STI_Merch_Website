@@ -21,13 +21,17 @@
             </form>
         </header>
 
-        <div class="browseSelection">
-            <form method="post">
-                <button   button name="browseSelection">Return to Browse Selection</button>
-            </form>
-        </div>
-
-        <h1 class="user">Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="main.php#home">Home</a></li>
+                <li><a href="main.php#shop">Shop</a></li>
+                <li><a href="main.php#about">About</a></li>
+            </ul>
+            <div class="user-info">
+                <span>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></span>
+            </div>
+        </nav>
 
         <div class="big-container">
         <h2>My cart</h2>
@@ -124,7 +128,6 @@
                     $add1ToItem = $_SESSION['db']->prepare($query);
                     $add1ToItem->execute();
                     $add1ToItem->close();
-                    header("Refresh: 0");
                 } else {
                     alert("Exceeded item stock");
                 }
@@ -137,13 +140,11 @@
                     $subtract1ToItem = $_SESSION['db']->prepare($query);
                     $subtract1ToItem->execute();
                     $subtract1ToItem->close();
-                    header("Refresh: 0");
                 } else {
                     $query = "DELETE FROM " . $_SESSION["cart"] . " WHERE itemName = '" . $itemName . "';";
                     $subtract1ToItem = $_SESSION['db']->prepare($query);
                     $subtract1ToItem->execute();
                     $subtract1ToItem->close();
-                    header("Refresh: 0");
                 }
             }
             function logout(){
@@ -152,9 +153,6 @@
             }
             if(isset($_POST["logout"])) {
                 logout();
-            }
-            if(isset($_POST["browseSelection"])) {
-                echo "<script>window.location.href = 'main.php';</script>";
             }
             if(isset($_POST["checkout"])) {
                 logout();
