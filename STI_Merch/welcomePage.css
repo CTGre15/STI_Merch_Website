@@ -24,7 +24,6 @@ header {
     top: 10px; /* Move header upwards */
     left: 0;
     z-index: 1000;
-    border-radius: 10px;
 }
 
 .logo {
