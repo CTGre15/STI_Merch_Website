@@ -1,290 +1,299 @@
 /* General styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 /* Header styles */
 header {
-    background-color: rgba(255, 255, 255, 0.9);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    padding: 5px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    width: 100%;
-    top: 10px; /* Move header upwards */
-    left: 0;
-    z-index: 1000;
-    border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 5px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 10px; /* Move header upwards */
+  left: 0;
+  z-index: 1000;
+  border-radius: 10px;
 }
 
 .logo {
-    padding: 5px;
+  padding: 5px;
 }
 
 .title {
-    text-align: left;
-    padding-left: 1rem;
+  text-align: left;
+  padding-left: 1rem;
 }
 
 .title h1 {
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    color: #00416A;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #00416a;
 }
 
 .logo img {
-    width: clamp(40px, 8vw, 80px);
-    height: auto;
+  width: clamp(40px, 8vw, 80px);
+  height: auto;
 }
 
 .logout-container {
-    margin-left: auto;
-    margin-right: 10px;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .logout {
-    background-color: #00416A;
-    border: none;
-    border-radius: 15px;
-    padding: 5px 10px;
-    font-size: clamp(0.7rem, 1.5vw, 1rem);
-    font-family: 'Times New Roman', Times, serif;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
+  background-color: #00416a;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 
 .logout:hover {
-    background-color: #72A0C1;
+  background-color: #72a0c1;
 }
 
 /* Slideshow container */
 .slideshow-container {
-    max-width: 100%;
-    position: relative;
-    margin: auto;
-    overflow: hidden;
-    padding-top: 80px; /* Adjust for fixed header */
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  padding-top: 80px; /* Adjust for fixed header */
 }
 
 /* Hide the images by default */
 .mySlides {
-    display: none;
+  display: none;
 }
 
 /* Image container */
 .image-container {
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Fade animation */
 .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
 
 @-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Dots/bullets/indicators */
 .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
 }
 
 .active {
-    background-color: #717171;
+  background-color: #717171;
 }
 
 /* Modal styles */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 60px; /* Adjust for fixed header */
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px; /* Adjust for fixed header */
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 5% auto;
-    padding: 2rem;
-    border: 1px solid #888;
-    width: min(90%, 400px);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 2rem;
+  border: 1px solid #888;
+  width: min(90%, 400px);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .close {
-    color: black;
-    float: right;
-    font-size: 1.75rem;
-    font-weight: bold;
+  color: black;
+  float: right;
+  font-size: 1.75rem;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: red;
-    text-decoration: none;
-    cursor: pointer;
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-input[type="text"], input[type="password"] {
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.625rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.625rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 input[type="submit"] {
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.625rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.625rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 .showPassword {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
 }
 
 .showPassword input[type="checkbox"] {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .changeForm {
-    text-align: center;
-    margin-top: 1rem;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .changeForm a {
-    color: #00416A;
-    text-decoration: none;
+  color: #00416a;
+  text-decoration: none;
 }
 
 .changeForm a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Login button outside modal */
 .login {
-    margin-left: auto;
-    margin-right: 7%;
+  margin-left: auto;
+  margin-right: 7%;
 }
 
 .login button {
-    background-color: #00416A;
-    border: none;
-    border-radius: 15px;
-    padding: 0.625rem 1.25rem;
-    font-size: clamp(0.9rem, 1.3vw, 1.2rem);
-    font-family: 'Times New Roman', Times, serif;
-    color: white;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background-color 0.3s ease;
+  background-color: #00416a;
+  border: none;
+  border-radius: 15px;
+  padding: 0.625rem 1.25rem;
+  font-size: clamp(0.9rem, 1.3vw, 1.2rem);
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
 }
 
 .login button:hover {
-    background-color: #72A0C1;
+  background-color: #72a0c1;
 }
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
-    header {
-        grid-template-columns: auto 1fr auto;
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-    
-    .title {
-        grid-column: 2;
-        padding-left: 0;
-    }
-    
-    .login {
-        grid-column: 3;
-        margin-right: 5%;
-    }
+  header {
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .title {
+    grid-column: 2;
+    padding-left: 0;
+  }
+
+  .login {
+    grid-column: 3;
+    margin-right: 5%;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    header {
-        grid-template-columns: auto 1fr auto;
-        grid-template-rows: auto;
-    }
-    
-    .logo {
-        grid-row: 1;
-        grid-column: 1;
-    }
+  header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
+  }
 
-    .title {
-        grid-row: 1;
-        grid-column: 2;
-        text-align: left;
-        padding-left: 0.5rem;
-    }
-    
-    .login {
-        grid-row: 1;
-        grid-column: 3;
-        justify-self: end;
-        margin-right: 3%;
-    }
-    
-    .modal-content {
-        margin: 10% auto;
-        padding: 1rem;
-    }
-    
-    form {
-        padding: 1rem;
-    }
+  .logo {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .title {
+    grid-row: 1;
+    grid-column: 2;
+    text-align: left;
+    padding-left: 0.5rem;
+  }
+
+  .login {
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: end;
+    margin-right: 3%;
+  }
+
+  .modal-content {
+    margin: 10% auto;
+    padding: 1rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
 }

@@ -3,8 +3,12 @@
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="welcomePage.css">
-        <script src="functions.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="welcomePage.css">
+    <link rel="stylesheet" href="asset/styles.css">
+    <script src="functions.js"></script>
     </head>
     <body>
         <?php
@@ -251,5 +255,45 @@
                 setTimeout(showSlides, 5000); // Change image every 5 seconds
             }
         </script>
+        <div class='section-container'>
+            <h1> Top STI Merchandise </h1>
+        </div>
+        <section class="product-minimal">
+
+                <div class="product-showcase">
+                    <div class="showcase-wrapper">
+                        <div class="showcase-container">
+                            <div class="showcase">
+                                <img src="placeholder/placeholder-image.webp" alt="Product Image" class="showcase-image">
+                                <div class="showcase-content">
+                                    <h3 class="showcase-title">Elegant Blue Timepiece</h3>
+                                    <p class="showcase-category">Watches</p>
+                                    <div class="price-box">
+                                        <p class="price">$129.99</p>
+                                        <del>$159.99</del>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-showcase">
+                    <div class="showcase-wrapper">
+                        <div class="showcase-container">
+                            <div class="showcase">
+                                <img src="placeholder/placeholder-image.webp" alt="Product Image" class="showcase-image">
+                                <div class="showcase-content">
+                                    <h3 class="showcase-title">Yellow Leather Messenger Bag</h3>
+                                    <p class="showcase-category">Accessories</p>
+                                    <div class="price-box">
+                                        <p class="price">$89.50</p>
+                                        <del>$119.99</del>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
     </body>
 </html>
