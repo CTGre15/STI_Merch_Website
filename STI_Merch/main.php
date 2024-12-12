@@ -110,10 +110,10 @@
         <?php
             function logout(){
                 session_destroy();
-                header("Location: welcome.php");
+                echo "<script>window.location.href = 'welcome.php';</script>";
             }
             function viewCart(){
-                header("Location: cart.php");
+                echo "<script>window.location.href = 'cart.php';</script>";
             }
             if(isset($_POST["logout"])) {
                 logout();

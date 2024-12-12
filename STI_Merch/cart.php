@@ -148,13 +148,13 @@
             }
             function logout(){
                 session_destroy();
-                header("Location: welcome.php");
+                echo "<script>window.location.href = 'welcome.php';</script>";
             }
             if(isset($_POST["logout"])) {
                 logout();
             }
             if(isset($_POST["browseSelection"])) {
-                header("Location: main.php");
+                echo "<script>window.location.href = 'main.php';</script>";
             }
             if(isset($_POST["checkout"])) {
                 logout();
