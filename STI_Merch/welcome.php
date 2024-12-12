@@ -66,9 +66,9 @@
                     if ($countPass > 0) {
                         setSession($email);
                         if ($email == "admin1"){
-                            header("Location: adminPage.php");
+                            echo "<script>window.location.href = 'adminPage.php';</script>";
                         } else {
-                            header("Location: main.php");
+                            echo "<script>window.location.href = 'main.php';</script>";
                         }
                     } else {
                         alert("Incorrect Password");
