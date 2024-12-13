@@ -145,6 +145,10 @@ header {
     align-items: center;
 }
 
+#orders {
+    grid-template-columns: repeat(9, 1fr);
+}
+
 .cartContainer div {
     padding: 0.625rem;
     text-align: center;

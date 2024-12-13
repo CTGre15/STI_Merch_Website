@@ -75,7 +75,7 @@
                                 <div><button name='add1'>+</button></div>
                             </form>";
                         echo "</div>";
-                        echo "<div>";
+                        echo "<div class='cartItemQuantity'>";
                         echo "<form method='post'>
                                 <input type='hidden' name='itemName' value='" . $row["itemName"] . "'>
                                 <div><button name='delete'>Delete</button></div>
@@ -84,10 +84,66 @@
                     }
                 }
                 ?>
+            </div>
         </div>
+        <div class="big-container">
+        <h2>Orders</h2>
+        <div class="cartContainer" id="orders">
+            <div><b>ID</b></div>
+            <div><b>Customer</b></div>
+            <div><b>Items Ordered</b></div>
+            <div><b>Phone Number</b></div>
+            <div><b>Address</b></div>
+            <div><b>Order Type</b></div>
+            <div><b>Price to Pay</b></div>
+            <div><b>Order Date</b></div>
+            <div><b></b></div>
+            <?php
+                $displayOrdersQuery = "SELECT * FROM Orders";
+                $resultOrders = mysqli_query($_SESSION['db'], $displayOrdersQuery);
+        
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($resultOrders)) {
+                        echo "<div>";
+                        echo $row["orderId"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["fullname"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["items"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["phoneNum"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["orderAddress"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["orderType"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["priceToPay"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["orderDate"];
+                        echo "</div>";
+                        echo "<div class='cartItemQuantity'>";
+                        echo "<form method='post'>
+                                <input type='hidden' name='orderId' value='" . $row["orderId"] . "'>
+                                <div><button name='removeOrder'>Finish Order</button></div>
+                            </form>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+            </div>
         </div>
         <?php
 
+            function refresh(){
+                echo "<script>window.location.href = 'cart.php';</script>";
+            }
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
             }
@@ -136,6 +192,7 @@
                 $add1ToItem = $_SESSION['db']->prepare($query);
                 $add1ToItem->execute();
                 $add1ToItem->close();
+                refresh();
             }
             function subtract1($itemName, $itemQuantity){
                 if ($itemQuantity > 1){
@@ -151,12 +208,21 @@
                     $subtract1ToItem->execute();
                     $subtract1ToItem->close();
                 }
+                refresh();
             }
             function deleteItem($itemName){
                 $query = "DELETE FROM Items WHERE itemName = '" . $itemName . "';";
                 $deleteItem = $_SESSION['db']->prepare($query);
                 $deleteItem->execute();
                 $deleteItem->close();
+                refresh();
+            }
+            function removeOrder($itemID){
+                $query = "DELETE FROM Orders WHERE orderId = " . $itemID . ";";
+                $removeOrder = $_SESSION['db']->prepare($query);
+                $removeOrder->execute();
+                $removeOrder->close();
+                refresh();
             }
             function logout(){
                 session_destroy();
@@ -176,6 +242,10 @@
             }
             if(isset($_POST["delete"])) {
                 deleteItem($_POST["itemName"]);
+            }
+            
+            if(isset($_POST["removeOrder"])) {
+                removeOrder($_POST["orderId"]);
             }
         ?>
     </body>
