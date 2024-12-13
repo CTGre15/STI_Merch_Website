@@ -274,7 +274,7 @@
                         <span class="product-card-price-original">159.99</span>
                     </div>
                 </div>
-                <a href="#" class="product-card-button">Add to Cart</a>
+                <a href="#" onclick="openModal('loginModal')" class="product-card-button">Add to Cart</a>
             </div>
 
             <div class="product-card">
@@ -287,7 +287,7 @@
                         <span class="product-card-price-original">250.00</span>
                     </div>
                 </div>
-                <a href="#" class="product-card-button">Add to Cart</a>
+                <a href="#" onclick="openModal('loginModal')" class="product-card-button">Add to Cart</a>
             </div>
 
             <div class="product-card">
@@ -300,7 +300,7 @@
                         <span class="product-card-price-original">99.99</span>
                     </div>
                 </div>
-                <a href="#" class="product-card-button">Add to Cart</a>
+                <a href="#" onclick="openModal('loginModal')" class="product-card-button">Add to Cart</a>
             </div>
 
             <div class="product-card">
@@ -313,7 +313,7 @@
                         <span class="product-card-price-original">99.99</span>
                     </div>
                 </div>
-                <a href="#" class="product-card-button">Add to Cart</a>
+                <a href="#" onclick="openModal('loginModal')" class="product-card-button">Add to Cart</a>
             </div>
     </div>
     </body>
