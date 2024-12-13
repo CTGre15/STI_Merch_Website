@@ -1,0 +1,180 @@
+/* Custom Properties with Blue and Yellow Palette */
+:root {
+  /**
+             * colors
+             */
+  --primary-blue: hsl(210, 80%, 50%);
+  --dark-blue: hsl(210, 80%, 30%);
+  --light-blue: hsl(210, 80%, 70%);
+  --primary-yellow: hsl(50, 100%, 60%);
+  --dark-yellow: hsl(50, 100%, 40%);
+  --light-yellow: hsl(50, 100%, 80%);
+  --text-dark: hsl(0, 0%, 13%);
+  --text-light: hsl(0, 0%, 47%);
+  --background-light: hsl(0, 0%, 93%);
+  --white: hsl(0, 100%, 100%);
+
+  /**
+             * typography
+             */
+  --fs-1: 1.563rem;
+  --fs-2: 1.375rem;
+  --fs-3: 1.25rem;
+  --fs-4: 1.125rem;
+  --fs-5: 1rem;
+  --fs-6: 0.938rem;
+  --fs-7: 0.875rem;
+  --fs-8: 0.813rem;
+  --fs-9: 0.75rem;
+  --fs-10: 0.688rem;
+  --fs-11: 0.625rem;
+  --weight-300: 300;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+
+  /**
+             * border-radius
+             */
+  --border-radius-md: 10px;
+  --border-radius-sm: 5px;
+
+  /**
+             * transition 
+             */
+  --transition-timing: 0.2s ease;
+}
+
+/* Reset and Base Styles (mostly kept from original) */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+button {
+  background: none;
+  font: inherit;
+  border: none;
+  cursor: pointer;
+}
+img,
+ion-icon,
+button,
+a {
+  display: block;
+}
+span {
+  display: inline-block;
+}
+html {
+  font-family: "Poppins", sans-serif;
+  overscroll-behavior: contain;
+}
+input {
+  display: block;
+  width: 100%;
+  font: inherit;
+}
+body {
+  background: var(--background-light);
+  color: var(--text-dark);
+}
+/* Section Styles */
+.section-container {
+  text-align: center;
+  padding: 2rem;
+}
+/* Product Minimal Styles */
+.product-minimal {
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.product-minimal .product-showcase {
+  margin-bottom: 10px;
+}
+.product-minimal .showcase-wrapper {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+}
+.product-minimal .showcase-container {
+  min-width: 100%;
+  padding: 0 5px;
+  scroll-snap-align: start;
+}
+.product-minimal .showcase {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid var(--primary-blue);
+  padding: 15px;
+  border-radius: var(--border-radius-md);
+  background-color: var(--white);
+  transition: all var(--transition-timing);
+}
+.product-minimal .showcase:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+.product-minimal .showcase:not(:last-child) {
+  margin-bottom: 15px;
+}
+.product-minimal .showcase-content {
+  width: calc(100% - 85px);
+}
+.product-minimal .showcase-title {
+  color: var(--dark-blue);
+  font-size: var(--fs-7);
+  font-weight: var(--weight-600);
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+.product-minimal .showcase-category {
+  width: max-content;
+  color: var(--text-light);
+  font-size: var(--fs-8);
+  text-transform: capitalize;
+  margin-bottom: 3px;
+  transition: color var(--transition-timing);
+}
+.product-minimal .showcase-category:hover {
+  color: var(--primary-yellow);
+}
+.product-minimal .price-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-minimal .price {
+  font-size: var(--fs-7);
+  font-weight: var(--weight-700);
+  color: var(--primary-blue);
+}
+.product-minimal .price-box del {
+  font-size: var(--fs-9);
+  color: var(--text-light);
+}
+.product-minimal .showcase-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  border: 2px solid var(--light-blue);
+}

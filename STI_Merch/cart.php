@@ -21,13 +21,17 @@
             </form>
         </header>
 
-        <div class="browseSelection">
-            <form method="post">
-                <button   button name="browseSelection">Return to Browse Selection</button>
-            </form>
-        </div>
-
-        <h1 class="user">Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></h1>
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="main.php#home">Home</a></li>
+                <li><a href="main.php#shop">Shop</a></li>
+                <li><a href="main.php#about">About</a></li>
+            </ul>
+            <div class="user-info">
+                <span>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></span>
+            </div>
+        </nav>
 
         <div class="big-container">
         <h2>My cart</h2>
@@ -37,6 +41,7 @@
             <div><b>Quantity</b></div>
             <div><b>Price</b></div>
             <?php
+                $order = "none";
                 $_SESSION["checkoutPrice"] = 0;
                 $displayCartQuery = "SELECT * FROM " . $_SESSION["cart"];
                 $result = mysqli_query($_SESSION['db'], $displayCartQuery);
@@ -66,6 +71,11 @@
                         echo "<span style='color: #FF5700;'>₱" . $price . "</span>";
                         echo "</div>";
                         $_SESSION["checkoutPrice"] = $_SESSION["checkoutPrice"] + $price;
+                        if ($order === "none"){
+                            $order = $quantity . " of " . getItemID($row["itemName"]);
+                        } else {
+                            $order = $order . ", " . $quantity . " of " . getItemID($row["itemName"]);
+                        }
                     }
                 }
                 ?>
@@ -82,13 +92,33 @@
             echo "Shipping Subtotal: ₱50<br><br><hr><br>";
             echo "<h5>Total Payment: ₱" . $totalPayment . "</h5><br>";
             echo "<form method='post'>
-                    <button name='checkout'>Place Order</button>
+                    <button name='checkoutCOD'>Pay with Cash on Delivery</button>
+                    <button name='checkoutCard'>Pay with Card</button>
                 </form>";
             echo "</div>";
             echo "</div>";
-
+            
+            function refresh(){
+                echo "<script>window.location.href = 'cart.php';</script>";
+            }
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
+            }
+            function getItemsOrdered($user){
+
+            }
+            function getItemID($itemName){
+                $getItemID = $_SESSION['db']->prepare("SELECT itemId FROM Items WHERE itemName = ?");
+                $getItemID->bind_param("s", $itemName);
+                $getItemID->execute();
+                $result = $getItemID->get_result();
+                $ID;
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $ID = $row["itemId"];
+                    }
+                }
+                return $ID;
             }
             function getItemPrice($itemName){
                 $getItemPrice = $_SESSION['db']->prepare("SELECT price FROM Items WHERE itemName = ?");
@@ -124,7 +154,7 @@
                     $add1ToItem = $_SESSION['db']->prepare($query);
                     $add1ToItem->execute();
                     $add1ToItem->close();
-                    header("Refresh: 0");
+                    refresh();
                 } else {
                     alert("Exceeded item stock");
                 }
@@ -137,13 +167,13 @@
                     $subtract1ToItem = $_SESSION['db']->prepare($query);
                     $subtract1ToItem->execute();
                     $subtract1ToItem->close();
-                    header("Refresh: 0");
+                    refresh();
                 } else {
                     $query = "DELETE FROM " . $_SESSION["cart"] . " WHERE itemName = '" . $itemName . "';";
                     $subtract1ToItem = $_SESSION['db']->prepare($query);
                     $subtract1ToItem->execute();
                     $subtract1ToItem->close();
-                    header("Refresh: 0");
+                    refresh();
                 }
             }
             function logout(){
@@ -153,11 +183,15 @@
             if(isset($_POST["logout"])) {
                 logout();
             }
-            if(isset($_POST["browseSelection"])) {
-                echo "<script>window.location.href = 'main.php';</script>";
+            if(isset($_POST["checkoutCOD"])) {
+                $_SESSION["totalToPay"] = $totalPayment;
+                $_SESSION["itemsOrdered"] = $order;
+                echo "<script>window.location.href = 'CODCheckoutPage.php';</script>";
             }
-            if(isset($_POST["checkout"])) {
-                logout();
+            if(isset($_POST["checkoutCard"])) {
+                $_SESSION["totalToPay"] = $totalPayment;
+                $_SESSION["itemsOrdered"] = $order;
+                echo "<script>window.location.href = 'cardCheckoutPage.php';</script>";
             }
             if(isset($_POST["add1"])) {
                 add1($_POST["itemName"], $_POST["itemQuantity"]);

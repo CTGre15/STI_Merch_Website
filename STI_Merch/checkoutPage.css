@@ -127,61 +127,6 @@ header {
     background-color: #72A0C1;
 }
 
-/* Cart container */
-.big-container {
-    max-width: 100rem;
-    margin: 6.875rem auto 1.25rem auto; 
-    padding: 1.25rem;
-    background-color: #fff;
-    border-radius: 0.625rem;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-}
-
-.cartContainer {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.25rem;
-    margin-top: 1.25rem;
-    align-items: center;
-}
-
-.cartContainer div {
-    padding: 0.625rem;
-    text-align: center;
-}
-
-.cartContainer div:nth-child(4n) {
-    border-right: none;
-}
-
-.cartItemQuantity {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cartItemQuantity form {
-    display: flex;
-    align-items: center;
-}
-
-.cartItemQuantity button {
-    background-color: #00416A;
-    border: none;
-    border-radius: 0.3125rem;
-    padding: 0.3125rem 0.625rem;
-    font-size: 1rem;
-    font-family: 'Times New Roman', Times, serif;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cartItemQuantity button:hover {
-    background-color: #72A0C1;
-}
-
-
 /* Media Queries */
 @media screen and (max-width: 48rem) {
     header {

@@ -41,10 +41,22 @@
                         stocks INT(5) NOT NULL,
                         imageName VARCHAR(100) NOT NULL
                         );";
+            $ordersTable = "CREATE TABLE IF NOT EXISTS Orders (
+                        orderId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        fullname VARCHAR(100) NOT NULL,
+                        orderAddress VARCHAR(200) NOT NULL,
+                        phoneNum INT NOT NULL,
+                        items INT(150) NOT NULL,
+                        orderType VARCHAR(10) NOT NULL,
+                        priceToPay INT,
+                        orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        );";
             $db = new mysqli($servername, $username, $password, $dbName);
             $_SESSION["db"] = $db;
             mysqli_query($db, $accountsTable);
             mysqli_query($db, $itemsTable);
+            mysqli_query($db, $ordersTable);
+            addSampleItems();
 
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
@@ -64,6 +76,40 @@
                 } else {
                 }
             }
+            function addSampleItems(){
+                $sampleItemName = array("Kitchen Uniform (All Sets)", "Arts and Science Daily Uniform", "Business Management Daily Uniform", "F and B Uniform", "Kitchen Uniform", 
+                    "Tourism Management Daily Uniform", "ICT and Engineering Daily Uniform", "Hospitality Management Daily Uniform", "Senior High School Daily Uniform", "STI 41st Anniversary Shirt", 
+                    "STI Mask", "STI 39th Anniversary Shirt (Blue)", "STI 39th Anniversary Shirt (Yellow)", "Business Management Pin", "Culinary Pin", "Information Technology Pin", 
+                    "Engineering Pin", "Arts and Science Pin", "Tourism Pin");
+                $sampleItemDesc = array("Senior High School uniform", "Arts and Science", "Business Management", "Food 7 Beverages Uniform for Hospitality Management", 
+                    "Kitchen Uniform for Hospitality Management", "Tourism Management", "ICT and Engineering", "Hospitality Uniform",  "Senior High School ", "41 Years Anniversary", "Mask", 
+                    "Blue Shirt (Available in classic tee)", "Yellow Shirt (Available in baby tee cut)", "Business Management", "Culinary", "Information Technology", "Engineering", 
+                    "Arts and Science", "Tourism Management");
+                $sampleItemPrice = array(1450, 1300, 1250, 1400, 1650, 1300, 1200, 1260, 1350, 195, 75, 195, 195, 75, 75, 75, 75, 75, 75, 75);
+                $sampleItemStock = array(35, 45, 38, 35, 40, 45, 32, 34, 34, 35, 30, 20, 15, 25, 10, 16, 22, 30, 28);
+                $sampleImageName = [];
+                for ($i = 1; $i <= 19; $i++) {
+                    $sampleImageName[] = "samp{$i}.jpg";
+                }
+                if (checkItems() == 0){
+                    for($i = 0; $i < count($sampleItemName); $i++){
+                        $insertQuery = $_SESSION['db']->prepare("INSERT INTO Items (itemName, itemDesc, price, stocks, imageName)
+                        VALUES (?, ?, ?, ?, ?)");
+                        $insertQuery->bind_param("ssiis", $sampleItemName[$i], $sampleItemDesc[$i], $sampleItemPrice[$i], $sampleItemStock[$i], $sampleImageName[$i]);
+                        $insertQuery->execute();
+                        $insertQuery->close();
+                    }
+                } else {}
+            }
+            function checkItems(){
+                $checkItemQuery = $_SESSION["db"]->prepare("SELECT COUNT(*) FROM Items");
+                $checkItemQuery->execute();
+                $checkItemQuery->bind_result($itemCount);
+                $checkItemQuery->fetch();
+                $checkItemQuery->close();
+
+                return $itemCount;
+            }
             function verify($email, $password){
                 $countEmail = findEmail($email);
                 if ($countEmail > 0) {
@@ -71,9 +117,9 @@
                     if ($countPass > 0) {
                         setSession($email);
                         if ($email == "admin1"){
-                            header("Location: adminPage.php");
+                            echo "<script>window.location.href = 'adminPage.php';</script>";
                         } else {
-                            header("Location: main.php");
+                            echo "<script>window.location.href = 'main.php';</script>";
                         }
                     } else {
                         alert("Incorrect Password");
@@ -168,7 +214,6 @@
             <div class="login"> <button onclick="openModal('loginModal')">Log in</button> </div>
         </header>
 
-        <!-- Slideshow container -->
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <div class="image-container" style="background-image: url('images/welcome.png');"></div>
@@ -196,10 +241,6 @@
                         <input type="text" id="loginemail" name="loginemail" required><br>
                         <label for="loginpassword">Password:</label>
                         <input type="password" id="loginpassword" name="loginpassword" required><br>
-                        <div class="showPassword">
-                            <input type="checkbox" onclick="showLoginPassword()">
-                            <span>Show Password</span>
-                        </div>
                         <input type="submit" name="login" value="Log in"><br><br>
 
                         <div class="changeForm">Don't have an account yet? <a href="#" onclick="openModal('registerModal'); closeModal('loginModal'); return false;">Register</a>.</div>
@@ -221,10 +262,6 @@
                         <input type="text" id="registeremail" name="registeremail" required><br>
                         <label for="registerpassword">Password:</label>
                         <input type="password" id="registerpassword" name="registerpassword" required><br>
-                        <div class="showPassword">
-                            <input type="checkbox" onclick="showRegisterPassword()">
-                            <span>Show Password</span>
-                        </div>
                         <input type="submit" name="register" value="Register"><br><br>
 
                         <div class="changeForm">Already have an account? <a href="#" onclick="openModal('loginModal'); closeModal('registerModal'); return false;">Log in</a>.</div>
