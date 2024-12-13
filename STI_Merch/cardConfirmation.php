@@ -7,7 +7,6 @@
     $dbName = "STIMerch";
     $db = new mysqli($servername, $username, $password, $dbName);
     $_SESSION['db'] = $db;
-    
 ?>
 <html>
     <head>
@@ -25,26 +24,32 @@
 
         <div class="user"><h1>Checkout</h1></div>
         
-        <form method="post" class="listItem">
-            <h3>Payment Confirmed</h3><br>
-            <h3>Order Details</h3><br>
-            <?php
-                $currentOrder = $_SESSION["currentOrder"];
-                $displayOrderQuery = "SELECT * FROM Orders WHERE OrderID = " . $currentOrder;
-                $result = mysqli_query($_SESSION['db'], $displayOrderQuery);
-        
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "Order #" . $row["orderId"] . "<br>";
-                        echo "Customer Name: " . $row["fullname"] . "<br>";
-                        echo "Phone Number: " . $row["phoneNum"] . "<br>";
-                        echo "Delivery Address: " . $row["orderAddress"] . "<br>";
-                        echo "Date Ordered and Payed: " . $row["orderDate"] . "<br>";
-                        echo "Amount Payed: " . $row["priceToPay"] . "<br>";
+        <form method="post">
+        <div class="order-details-container">
+            <h3>Payment Confirmed</h3>
+            <h3>Order Details</h3>
+            <div class="order-details">
+                <?php
+                    $currentOrder = $_SESSION["currentOrder"];
+                    $displayOrderQuery = "SELECT * FROM Orders WHERE orderId = " . $currentOrder;
+                    $result = mysqli_query($_SESSION['db'], $displayOrderQuery);
+            
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<p><strong>Order #:</strong> " . $row["orderId"] . "</p>";
+                            echo "<p><strong>Customer Name:</strong> " . $row["fullname"] . "</p>";
+                            echo "<p><strong>Phone Number:</strong> " . $row["phoneNum"] . "</p>";
+                            echo "<p><strong>Delivery Address:</strong> " . $row["orderAddress"] . "</p>";
+                            echo "<p><strong>Date Ordered and Paid:</strong> " . $row["orderDate"] . "</p>";
+                            echo "<p><strong>Amount Paid:</strong> ₱" . $row["priceToPay"] . "</p>";
+                        }
+                    } else {
+                        echo "<p>No order details found.</p>";
                     }
-                }
-            ?>
-            <input type="button" value="Back to Home" onclick="window.location.href = 'main.php'" />;
+                ?>
+            </div>
+            <button class="back-home" name="backToHome">Back to Home</button>
+        </div>
         </form>
 
         <?php
@@ -52,8 +57,14 @@
                 session_destroy();
                 echo "<script>window.location.href = 'welcome.php';</script>";
             }
+            function backToHome(){
+                echo "<script>window.location.href = 'main.php';</script>";
+            }
             if(isset($_POST["logout"])) {
                 logout();
+            }
+            if(isset($_POST["backToHome"])) {
+                backToHome();
             }
         ?>
     </body>
