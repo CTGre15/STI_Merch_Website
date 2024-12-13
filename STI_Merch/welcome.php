@@ -3,11 +3,16 @@
 ?>
 <html>
     <head>
+    <!--  Fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+   
+   <!-- Stylesheet -->
     <link rel="stylesheet" href="welcomePage.css">
-    <link rel="stylesheet" href="asset/styles.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Javascript -->
     <script src="functions.js"></script>
     </head>
     <body>
@@ -258,42 +263,58 @@
         <div class='section-container'>
             <h1> Top STI Merchandise </h1>
         </div>
-        <section class="product-minimal">
+        <div class="product-container">
+            <div class="product-card">
+                <img src="images/home5.jpg" alt="Product Image" class="product-card-image">
+                <div class="product-card-content">
+                    <h3 class="product-card-title">40th Anniv Shirt</h3>
+                    <p class="product-card-category">Shirts</p>
+                    <div class="product-card-price-box">
+                        <span class="product-card-price">129.99</span>
+                        <span class="product-card-price-original">159.99</span>
+                    </div>
+                </div>
+                <a href="#" class="product-card-button">Add to Cart</a>
+            </div>
 
-                <div class="product-showcase">
-                    <div class="showcase-wrapper">
-                        <div class="showcase-container">
-                            <div class="showcase">
-                                <img src="placeholder/placeholder-image.webp" alt="Product Image" class="showcase-image">
-                                <div class="showcase-content">
-                                    <h3 class="showcase-title">Elegant Blue Timepiece</h3>
-                                    <p class="showcase-category">Watches</p>
-                                    <div class="price-box">
-                                        <p class="price">$129.99</p>
-                                        <del>$159.99</del>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="product-card">
+                <img src="images/home4.jpg" alt="Product Image" class="product-card-image">
+                <div class="product-card-content">
+                    <h3 class="product-card-title">STI 39th Anniversary Shirt</h3>
+                    <p class="product-card-category">Shirts</p>
+                    <div class="product-card-price-box">
+                        <span class="product-card-price">195.00</span>
+                        <span class="product-card-price-original">250.00</span>
                     </div>
                 </div>
-                <div class="product-showcase">
-                    <div class="showcase-wrapper">
-                        <div class="showcase-container">
-                            <div class="showcase">
-                                <img src="placeholder/placeholder-image.webp" alt="Product Image" class="showcase-image">
-                                <div class="showcase-content">
-                                    <h3 class="showcase-title">Yellow Leather Messenger Bag</h3>
-                                    <p class="showcase-category">Accessories</p>
-                                    <div class="price-box">
-                                        <p class="price">$89.50</p>
-                                        <del>$119.99</del>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <a href="#" class="product-card-button">Add to Cart</a>
+            </div>
+
+            <div class="product-card">
+                <img src="sampleImages/BSCS-Pin.jpg" alt="Product Image" class="product-card-image">
+                <div class="product-card-content">
+                    <h3 class="product-card-title">Computer Science Pin</h3>
+                    <p class="product-card-category">Accessories</p>
+                    <div class="product-card-price-box">
+                        <span class="product-card-price">75.00</span>
+                        <span class="product-card-price-original">99.99</span>
                     </div>
                 </div>
-            </section>
+                <a href="#" class="product-card-button">Add to Cart</a>
+            </div>
+
+            <div class="product-card">
+                <img src="sampleImages/BSTM-Pin.jpg" alt="Product Image" class="product-card-image">
+                <div class="product-card-content">
+                    <h3 class="product-card-title">Tourism Pin</h3>
+                    <p class="product-card-category">Accesories</p>
+                    <div class="product-card-price-box">
+                        <span class="product-card-price">75.00</span>
+                        <span class="product-card-price-original">99.99</span>
+                    </div>
+                </div>
+                <a href="#" class="product-card-button">Add to Cart</a>
+            </div>
+    </div>
     </body>
 </html>
