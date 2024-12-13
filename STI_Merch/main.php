@@ -30,11 +30,11 @@
                 <li><a href="#about">About</a></li>
             </ul>
             <div class="user-info">
-                <span>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></span>
+                <form method="post">
+                    <span>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></span>
+                    <button name="viewCart" class="cart-icon"><i class="fas fa-shopping-cart"></i></button>
+                </form>
             </div>
-            <form method="post">
-                <button name="viewCart" class="cart-icon"><i class="fas fa-shopping-cart"></i></button>
-            </form>
         </nav>
 
         <!-- Home Section -->

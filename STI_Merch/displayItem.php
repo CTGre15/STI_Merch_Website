@@ -73,7 +73,7 @@
                 $getStock->bind_param("s", $itemName);
                 $getStock->execute();
                 $result = $getStock->get_result();
-                $stocks;
+                $stocks = 0;
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         $stocks = $row["stocks"];
@@ -87,7 +87,7 @@
                 $getCartQuantity->bind_param("s", $itemName);
                 $getCartQuantity->execute();
                 $result = $getCartQuantity->get_result();
-                $cartQuantity;
+                $cartQuantity = 0;
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         $cartQuantity = $row["addedToCart"];

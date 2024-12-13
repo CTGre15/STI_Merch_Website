@@ -105,6 +105,8 @@ header {
 }
 
 .user-info {
+    display: flex;
+    align-items: center;
     color: white;
     font-size: 1rem;
 }
@@ -297,7 +299,7 @@ section {
     overflow: hidden;
     box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 53vh;
+    height: 55vh;
 }
 
 .itemFrame:hover {
@@ -322,7 +324,7 @@ section {
     background-color: white;
     padding: 0.625rem;
     text-align: center;
-    height: 15vh;
+    height: 20vh;
 }
 
 .itemName {
