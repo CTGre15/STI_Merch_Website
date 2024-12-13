@@ -10,6 +10,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="displayItem.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script src="functions.js"></script>
     </head>
     <body>
@@ -17,7 +18,6 @@
             <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
             <div class="title"> <h1>STI Merch Store</h1> </div>
             <form method="post" class="logout-container">
-                <button name="viewCart" class="logout">View My Cart</button>
                 <button name="logout" class="logout">Log out</button>
             </form>
         </header>
@@ -29,9 +29,12 @@
                 <li><a href="main.php#shop">Shop</a></li>
                 <li><a href="main.php#about">About</a></li>
             </ul>
+            <form method="post">
             <div class="user-info">
                 <span>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></span>
+                <button name="viewCart" class="cart-icon"><i class="fas fa-shopping-cart"></i></button>
             </div>
+            </form>
         </nav>
         
         <div class="item-container">
