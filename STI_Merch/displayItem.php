@@ -17,6 +17,7 @@
             <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
             <div class="title"> <h1>STI Merch Store</h1> </div>
             <form method="post" class="logout-container">
+                <button name="viewCart" class="logout">View My Cart</button>
                 <button name="logout" class="logout">Log out</button>
             </form>
         </header>
@@ -114,13 +115,16 @@
             }
             function logout(){
                 session_destroy();
-                header("Location: welcome.php");
+                echo "<script>window.location.href = 'welcome.php';</script>";
             }
             if(isset($_POST["logout"])) {
                 logout();
             }
             if(isset($_POST["addToCart"])) {
                 addToCart($_GET["itemName"]);
+            }
+            if(isset($_POST["viewCart"])) {
+                viewCart();
             }
         ?>
     </body>

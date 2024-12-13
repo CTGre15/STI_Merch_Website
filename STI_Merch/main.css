@@ -266,10 +266,9 @@ section {
 
 .selectionContainer {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns per row */
+    grid-template-columns: repeat(5, 1fr); /* 4 columns per row */
     gap: 1.25rem;
-    width: 90%;
-    max-width: 75rem;
+    width: auto;
 }
 
 .clickable {
@@ -284,13 +283,20 @@ section {
     overflow: hidden;
     box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 53vh;
 }
 
 .itemFrame:hover {
     transform: translateY(-0.3125rem);
     box-shadow: 0.25rem 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
 }
-
+#imageFrame{
+    align-items: center;
+    justify-items: center;
+    max-height: 38vh;
+    max-width: auto;
+    overflow: hidden;
+}
 #itemPic {
     width: 100%;
     height: auto;
@@ -298,8 +304,11 @@ section {
 }
 
 #itemDesc {
+    border-color: #f4f4f4;
+    background-color: white;
     padding: 0.625rem;
     text-align: center;
+    height: 15vh;
 }
 
 .itemName {
@@ -326,16 +335,12 @@ section {
 }
 
 /* View Cart button */
-.viewCart {
-    text-align: center;
-    margin-top: 1.25rem;
-}
 
 .viewCart button {
     background-color: #00416A;
     border: none;
     border-radius: 0.9375rem;
-    padding: 0.625rem 1.25rem;
+    padding: 0.400rem 1rem;
     font-size: 1rem;
     font-family: 'Times New Roman', Times, serif;
     color: white;
