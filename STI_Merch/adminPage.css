@@ -68,18 +68,30 @@ header {
     background-color: #72A0C1;
 }
 
-/* User greeting */
-.user {
-    margin-top: 4.1875rem; /* Adjust for fixed header */
-    text-align: center;
-    font-size: 1.5rem;
-    color: #00416A;
+.navbar {
+    background-color: #00416A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3125rem 0.625rem; /* Minimized padding */
+    position: fixed;
+    width: 100%;
+    top: 3.75rem; /* Adjust for minimized header */
+    left: 0;
+    z-index: 999;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+    justify-content: right;
+}
+
+.user-info {
+    color: white;
+    font-size: 1rem;
 }
 
 /* List item form */
 .listItem {
     max-width: 37.5rem;
-    margin: 1.25rem auto;
+    margin: 8rem auto 1.25rem auto;
     padding: 1.25rem;
     background-color: #fff;
     border-radius: 0.625rem;

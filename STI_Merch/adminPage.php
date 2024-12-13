@@ -21,7 +21,12 @@
             </form>
         </header>
 
-        <div class="user"><h1>Welcome Admin</h1></div>
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <div class="user-info">
+                <span>Welcome Admin</span>
+            </div>
+        </nav>
         
         <form method="post" class="listItem" enctype="multipart/form-data">
             <h3>List an Item</h3><br>
@@ -142,7 +147,7 @@
         <?php
 
             function refresh(){
-                echo "<script>window.location.href = 'cart.php';</script>";
+                echo "<script>window.location.href = 'adminPage.php';</script>";
             }
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
@@ -243,7 +248,6 @@
             if(isset($_POST["delete"])) {
                 deleteItem($_POST["itemName"]);
             }
-            
             if(isset($_POST["removeOrder"])) {
                 removeOrder($_POST["orderId"]);
             }
