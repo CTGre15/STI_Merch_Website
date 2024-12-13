@@ -17,6 +17,16 @@
             </form>
         </header>
 
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <form method="post">
+                <button name="return" class="return-button">Return</button>
+            </form>
+            <div class="user-info">
+                <span>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></span>
+            </div>
+        </nav>
+
         <div class="user"><h1>Checkout</h1></div>
         
         <form method="post" class="listItem">
@@ -93,6 +103,9 @@
                 deleteCart($_SESSION["cart"]);
                 passItemVariables($order, $toPay);
                 echo "<script>window.location.href = 'CODConfirmation.php';</script>";
+            }
+            if(isset($_POST["return"])) {
+                echo "<script>window.location.href = 'cart.php';</script>";
             }
         ?>
     </body>

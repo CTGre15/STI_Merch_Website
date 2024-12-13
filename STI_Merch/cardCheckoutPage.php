@@ -17,6 +17,16 @@
             </form>
         </header>
 
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <form method="post">
+                <button name="return" class="return-button">Return</button>
+            </form>
+            <div class="user-info">
+                <span>Hello, <?php echo $_SESSION["fName"] . " " . $_SESSION["lName"]; ?></span>
+            </div>
+        </nav>
+
         <div class="user"><h1>Checkout</h1></div>
         
         <form method="post" class="listItem">
@@ -43,20 +53,20 @@
             <input type="text" name="specAddress" placeholder="Street Name, Building, House No." required><br><br>
             <label for="fullName">Cards Accepted:</label>
             <img src="images/cards.png" alt="bank cards">
-            <label for="fullName">Name on Card:</label>
-            <input type="text" name="fullName" placeholder="Mario Gonzales" required><br>
-            <label for="fullName">Name on Card:</label>
-            <input type="number" placeholder="1234 2345 3456 4444" required>
-            <label for="fullName">Exp. Month: </label>
-            <input type="text" placeholder="September" required>
-            <div class = "address">
+            <label for="cardName">Name on Card:</label>
+            <input type="text" name="cardName" placeholder="Mario Gonzales" required><br>
+            <label for="cardNumber">Card Number:</label>
+            <input type="number" name="cardNumber" placeholder="1234 2345 3456 4444" required><br>
+            <label for="expMonth">Exp. Month: </label>
+            <input type="text" name="expMonth" placeholder="September" required><br>
+            <div class="address">
                 <div>
-                <label for="fullName">Exp. Year:</label>
-                <input type="number" placeholder="2030" required>
+                    <label for="expYear">Exp. Year:</label>
+                    <input type="number" name="expYear" placeholder="2030" required><br>
                 </div>
                 <div>
-                <label for="fullName">CVV: </label>
-                <input type="number" pattern="[0-9]{3}" placeholder="203" required>
+                    <label for="cvv">CVV: </label>
+                    <input type="number" name="cvv" pattern="[0-9]{3}" placeholder="203" required><br>
                 </div>
             </div>
             <button name="placeOrder">Place Order</button>
@@ -111,6 +121,9 @@
                 deleteCart($_SESSION["cart"]);
                 passItemVariables($order, $toPay);
                 echo "<script>window.location.href = 'cardConfirmation.php';</script>";
+            }
+            if(isset($_POST["return"])) {
+                echo "<script>window.location.href = 'cart.php';</script>";
             }
         ?>
     </body>

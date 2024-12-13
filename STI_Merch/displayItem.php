@@ -117,6 +117,9 @@
                 session_destroy();
                 echo "<script>window.location.href = 'welcome.php';</script>";
             }
+            function viewCart(){
+                echo "<script>window.location.href = 'cart.php';</script>";
+            }
             if(isset($_POST["logout"])) {
                 logout();
             }
