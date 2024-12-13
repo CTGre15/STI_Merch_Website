@@ -41,7 +41,7 @@
                         fullname VARCHAR(100) NOT NULL,
                         orderAddress VARCHAR(200) NOT NULL,
                         phoneNum INT NOT NULL,
-                        items INT(150) NOT NULL,
+                        items VARCHAR(150) NOT NULL,
                         orderType VARCHAR(10) NOT NULL,
                         priceToPay INT,
                         orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
