@@ -17,6 +17,7 @@
             <div class="logo"> <img src="images/sti-logo.png" alt="STI Logo"> </div>
             <div class="title"> <h1>STI Merch Store</h1> </div>
             <form method="post" class="logout-container">
+                <button name="viewCart" class="logout">View My Cart</button>
                 <button name="logout" class="logout">Log out</button>
             </form>
         </header>
@@ -75,7 +76,7 @@
                             while($row = mysqli_fetch_assoc($result)) {
                                 echo "<a class='clickable' href='displayItem.php?itemName=" . $row["itemName"] . "'>";
                                 echo "<div class='itemFrame'>";
-                                echo "<img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'>";
+                                echo "<div id='imageFrame'><img id='itemPic' src='itemsImage/" . $row['imageName'] . "' alt='" . $row["itemName"] . "'></div>";
                                 echo "<div id='itemDesc'>";
                                 echo "<b class='itemName'>" . $row["itemName"] . "</b>";
                                 echo "<p class='itemDesc'>" . $row["itemDesc"] . "</p>";
@@ -88,11 +89,6 @@
                         }
                     ?>
                 </div>
-            </div>
-            <div class="viewCart">
-                <form method="post">
-                    <button name="viewCart">View My Cart</button>
-                </form>
             </div>
         </section>
 

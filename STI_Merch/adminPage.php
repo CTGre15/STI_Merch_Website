@@ -1,5 +1,11 @@
 <?php
     session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbName = "STIMerch";
+    $db = new mysqli($servername, $username, $password, $dbName);
+    $_SESSION['db'] = $db;
 ?>
 <html>
     <head>
@@ -31,14 +37,56 @@
             <input type="file" id="image" name="image" required><br><br>
             <button name="listItem">List Item</button>
         </form>
-
+        <div class="big-container">
+        <h2>Item List</h2>
+        <div class="cartContainer">
+            <div><b>ID</b></div>
+            <div><b>Name</b></div>
+            <div><b>Description</b></div>
+            <div><b>Price</b></div>
+            <div><b>Stocks</b></div>
+            <div><b></b></div>
+            <?php
+                $displayItemsQuery = "SELECT * FROM Items";
+                $result = mysqli_query($_SESSION['db'], $displayItemsQuery);
+        
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $stocks = $row["stocks"];
+                        
+                        echo "<div>";
+                        echo $row["itemId"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["itemName"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["itemDesc"];
+                        echo "</div>";
+                        echo "<div>";
+                        echo $row["price"];
+                        echo "</div>";
+                        echo "<div class='cartItemQuantity'>";
+                        echo "<form method='post'>
+                                <div><button name='subtract1'>-</button></div>
+                                <input type='hidden' name='itemName' value='" . $row["itemName"] . "'>
+                                <input type='hidden' name='itemQuantity' value='" . $stocks . "'>
+                                <div><span style='color: #008000;'>" . $stocks . "</span></div>
+                                <div><button name='add1'>+</button></div>
+                            </form>";
+                        echo "</div>";
+                        echo "<div>";
+                        echo "<form method='post'>
+                                <input type='hidden' name='itemName' value='" . $row["itemName"] . "'>
+                                <div><button name='delete'>Delete</button></div>
+                            </form>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+        </div>
+        </div>
         <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbName = "STIMerch";
-            $db = new mysqli($servername, $username, $password, $dbName);
-            $_SESSION['db'] = $db;
 
             function alert($msg) {
                 echo "<script type='text/javascript'>alert('$msg');</script>";
@@ -81,15 +129,53 @@
 
                 return $fileName;
             }
+            function add1($itemName, $itemQuantity){
+                $query = "UPDATE Items
+                            SET stocks = stocks + 1
+                            WHERE itemName = '" . $itemName . "';";
+                $add1ToItem = $_SESSION['db']->prepare($query);
+                $add1ToItem->execute();
+                $add1ToItem->close();
+            }
+            function subtract1($itemName, $itemQuantity){
+                if ($itemQuantity > 1){
+                    $query = "UPDATE Items
+                                SET stocks = stocks - 1
+                                WHERE itemName = '" . $itemName . "';";
+                    $subtract1ToItem = $_SESSION['db']->prepare($query);
+                    $subtract1ToItem->execute();
+                    $subtract1ToItem->close();
+                } else {
+                    $query = "DELETE FROM Items WHERE itemName = '" . $itemName . "';";
+                    $subtract1ToItem = $_SESSION['db']->prepare($query);
+                    $subtract1ToItem->execute();
+                    $subtract1ToItem->close();
+                }
+            }
+            function deleteItem($itemName){
+                $query = "DELETE FROM Items WHERE itemName = '" . $itemName . "';";
+                $deleteItem = $_SESSION['db']->prepare($query);
+                $deleteItem->execute();
+                $deleteItem->close();
+            }
             function logout(){
                 session_destroy();
-                header("Location: welcome.php");
+                echo "<script>window.location.href = 'welcome.php';</script>";
             }
             if(isset($_POST["logout"])) {
                 logout();
             }
             if(isset($_POST["listItem"])) {
                 passItemVariables();
+            }
+            if(isset($_POST["add1"])) {
+                add1($_POST["itemName"], $_POST["itemQuantity"]);
+            }
+            if(isset($_POST["subtract1"])) {
+                subtract1($_POST["itemName"], $_POST["itemQuantity"]);
+            }
+            if(isset($_POST["delete"])) {
+                deleteItem($_POST["itemName"]);
             }
         ?>
     </body>

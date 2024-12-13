@@ -111,7 +111,7 @@ header {
 
 /* Item container */
 .item-container {
-    max-width: 50rem;
+    max-width: 80rem;
     margin: 7.5rem auto 0.625rem auto; 
     padding: 1.25rem;
     background-color: #fff;
